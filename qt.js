@@ -42,6 +42,7 @@ function preload() {
 const gameArea = new GameArea();
 const windowObject = new Window();
 const mode = new Mode();
+const openingPrompt = new OpeningPrompt();
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
@@ -56,9 +57,13 @@ function draw() {
 
   if (mode.main === "window test") {
     windowObject.windowSize();
+
   }
   else if (mode.main === "opening prompt") {
-    
+    openingPrompt.handleMouse();
+    openingPrompt.display();
+  }
+  else if (mode.main === "title screen") {
   }
 }
 

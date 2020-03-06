@@ -31,7 +31,7 @@ function Window() {
       // FULL SCREEN BUTTON ////////////
       textSize(25); 
       textAlign(CENTER, CENTER);
-      const fsbcoordinates = [center(window.innerWidth, 300), 450, 300, 50];
+      const fsbcoordinates = [center(window.innerWidth, 300), 420, 300, 50];
       strokeWeight(3);
       fill(0);
       rect(fsbcoordinates[0], fsbcoordinates[1], fsbcoordinates[2], fsbcoordinates[3]);
@@ -45,10 +45,9 @@ function Window() {
         if (mouseIsPressed) {
           mode.main = "opening prompt";
           cursor("default");
+          openingPrompt.fullScreenPreSelected = true;
+          openingPrompt.enableFullScreen = true;
           transistionToFullScreen();
-          // mode = "game setup";
-          // cursor("default");
-          // transistionToFullScreen();
         }
       }
       // NOT HOVERING OVER BUTTON
