@@ -27,8 +27,6 @@ function collideRectRect (x, y, w, h, x2, y2, w2, h2) {
 
 function transistionToFullScreen() {
   resizeCanvas(screen.width, screen.height);
-  windowWidth = screen.width;
-  windowHeight = screen.height;
   const bodyElement = document.getElementById("body");
   bodyElement.requestFullscreen();
 }
