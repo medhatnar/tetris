@@ -180,7 +180,7 @@ function draw() {
   }
   else if (mode === "game setup") {
     gameArea = new GameArea(windowWidth, windowHeight);
-    titleScreen = new TitleScreen(gameArea.width, gameArea.height, arrowImages);
+    // titleScreen = new TitleScreen(gameArea.width, gameArea.height, arrowImages);
     survivalClock = new SurvivalClock(gameArea.width, gameArea.height);
     player = new Player(gameArea.width, gameArea.height);
     enemySet = new EnemySet();
@@ -189,12 +189,8 @@ function draw() {
     mode = "title screen";
   }
   else if (mode === "title screen") {
-    gameArea.display();
     translate(gameArea.corner[0], gameArea.corner[1]);
     titleScreen.display();
-    if(keyCode === ENTER) {
-      mode = "game";
-    }
   }
   else if (mode === "game") {
     // Set up the game area and move the coordinate grid to it's top left corner.
