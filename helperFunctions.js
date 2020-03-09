@@ -27,7 +27,7 @@ function collideRectRect (x, y, w, h, x2, y2, w2, h2) {
 
 function randomLetter() {
   // const selection = randRange(0, 7);
-  const selection = 2;
+  const selection = 4;
   if (selection === 0) return new I();
   else if (selection === 1) return new J();
   else if (selection === 2) return new L();
