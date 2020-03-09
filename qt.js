@@ -85,6 +85,7 @@ const dev = new Dev();
 const fallIntervalTimer = new FallIntervalTimer();
 let currentShape = new CurrentShape(7, 0, randomLetter());
 const preview = new Preview();
+const game = new Game();
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
