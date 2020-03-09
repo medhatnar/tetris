@@ -9,6 +9,8 @@ class CurrentShape extends Shape {
   }
 
   // Methods
+
+  // Horizontal Collision
   collideH(dir) {
     const blockPositions = this.letter.blockPositions(this.left, this.top, this.angle);
     for (let i = 0 ; i < 4 ; i++ ) {
@@ -19,6 +21,7 @@ class CurrentShape extends Shape {
     return false;
   }
 
+  // Vertical Collision
   collideV() {
     const blockPositions = this.letter.blockPositions(this.left, this.top, this.angle);
     for (let i = 0 ; i < 4 ; i++ ) {
@@ -69,6 +72,7 @@ class CurrentShape extends Shape {
           moveSound.play();
         }
       }
+      // Space bar to rotate. 
       else if (
         keyIsDown(32)
         && !(keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(DOWN_ARROW))

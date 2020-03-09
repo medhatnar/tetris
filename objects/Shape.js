@@ -9,8 +9,6 @@ class Shape {
     this.left = left;
     this.top = top;
     this.angle = 0;
-    this.width = letter.width(this.angle);
-    this.height = letter.width(this.angle + 1);
   }
 
 

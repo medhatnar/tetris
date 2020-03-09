@@ -12,19 +12,6 @@ function collidePointRect (pointX, pointY, x, y, xW, yW) {
   return false;
 }
 
-
-function collideRectRect (x, y, w, h, x2, y2, w2, h2) {
-  //2d
-  //add in a thing to detect rectMode CENTER
-  if (x + w >= x2 &&    // r1 right edge past r2 left
-      x <= x2 + w2 &&    // r1 left edge past r2 right
-      y + h >= y2 &&    // r1 top edge past r2 bottom
-      y <= y2 + h2) {    // r1 bottom edge past r2 top
-        return true;
-  }
-  return false;
-};
-
 function randomLetter() {
   const selection = randRange(0, 7);
   // const selection = 0;
@@ -43,14 +30,6 @@ function transistionToFullScreen() {
   bodyElement.requestFullscreen();
 }
 
-function pauseEverything() {
-  player.pause = true;
-  enemySet.pause = true;
-  for (const enemyIndex in enemySet.enemies) {
-    enemySet.enemies[enemyIndex].pause = true;
-  }
-}
-
 function randRange(min, max) {
   if (min < 0 && max <= 0) {
     return min + Math.floor(Math.random() * (Math.abs(min) + max));
@@ -61,18 +40,4 @@ function randRange(min, max) {
   else if (min >= 0) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
-}
-
-function minimum(min, comparative) {
-  if (min > comparative) {
-    return min;
-  }
-  else return comparative;
-}
-
-function maximum(max, comparative) {
-  if (max < comparative) {
-    return max;
-  }
-  else return comparative;
 }

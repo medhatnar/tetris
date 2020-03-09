@@ -1,8 +1,8 @@
 function Grid() {
+
   // CONSTANTS
   this.unit = 30;
   this.width = 15;
-  // this.height = 29;
   this.height = 33;
   this.left = display.borderSize - this.unit;
   this.top = -(this.unit * 4);
@@ -49,19 +49,10 @@ function Grid() {
       );
     }
 
-    // for (let i = 1; i < this.height - 4; i++) {
-    //   line(
-    //     this.left + this.unit,
-    //     this.unit * i,
-    //     this.left + this.unitit + this.width * this.unit,
-    //     this.unit * i
-    //   );
-    // }
-
     // Draw block images for any shapes absorbed into the grid.
-    // Loop through each row.
+    // Iterate through each row.
     for (let i = 0; i < this.gridArray.length; i++) {
-      // Loop through each cell of each row.
+      // Iterate through each cell of each row.
       for (let j = 0; j < this.gridArray[i].length; j++) {
         // Check to see if cell is null.
         if (this.gridArray[i][j]) {

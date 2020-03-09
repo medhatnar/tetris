@@ -4,6 +4,7 @@ function Display() {
   this.floorHeight = 30;
 
   this.display = function() {
+
     // Display the game area first
     gameArea.display();
 

@@ -120,7 +120,6 @@ function draw() {
     titleScreen.enterButtonDown();
   }
   else if (mode.main === "game") {
-
     if (mode.game === "new shape") {
       preview.newShape();
     }
@@ -128,7 +127,6 @@ function draw() {
     if (mode.game === "shape in play")
     {
       currentShape.move();
-      // grid.absorbCurrentShape();
     }
 
     if (mode.game === "update grid") {
