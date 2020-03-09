@@ -30,6 +30,17 @@ class CurrentShape extends Shape {
     return false;
   }
 
+  rotateCollide() {
+    const blockPositions = this.letter.blockPositions(this.left, this.top, ((this.angle + 1) % this.letter.angles));
+    for (let i = 0 ; i < 4 ; i++) {
+      if (grid.gridArray[blockPositions[i][1]][blockPositions[i][0]] !== null) {
+        return true;
+
+      }
+    }
+    return false;
+  }
+
   move() {
     if (frameCount % this.playerControlInterval === 0) {
       if (
@@ -61,8 +72,10 @@ class CurrentShape extends Shape {
       else if (
         keyIsDown(32)
         && !(keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(DOWN_ARROW))
+        && !(this.rotateCollide())
       ) {        
         this.angle = (this.angle + 1) % this.letter.angles;
+        rotateSound.play();
       }
     }
 
