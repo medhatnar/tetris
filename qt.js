@@ -6,7 +6,6 @@ document.documentElement.style.overflow = "hidden";
 const font0 = "VT323";
 
 // SOUNDEFFECTS ////
-let fallIntervalSound;
 let lineCollapseSound;
 let cannotRotateSound;
 let moveSound;
@@ -38,9 +37,9 @@ let tShapePreviewImage;
 let jShapePreviewImage;
 let lShapePreviewImage;
 
-
-
 function preload() {
+
+  // Block Images
   darkBlueBlockImage = loadImage("./assets/images/blocks/30px Size/Dark_Blue_Block.png");
   hotPinkBlockImage = loadImage("./assets/images/blocks/30px Size/Hot_Pink_Block.png");
   lightPinkBlockImage = loadImage("./assets/images/blocks/30px Size/Light_Pink_Block.png");
@@ -49,6 +48,7 @@ function preload() {
   whiteBlockImage = loadImage("./assets/images/blocks/30px Size/White_Block.png");
   yellowBlockImage = loadImage("./assets/images/blocks/30px Size/Yellow_Block.png");
 
+  // Preview Shape Images
   iShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/IShape.png");
   zShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/ZShape.png")
   tShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/TShape.png");
@@ -57,6 +57,14 @@ function preload() {
   lShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/LShape.png");
   jShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/JShape.png");
 
+  // Sound Effects
+  // lineCollapseSound;
+  // cannotRotateSound;
+  // Best move sounds: 1, 7, 8, 9
+  moveSound = loadSound("./assets/sounds/moveSound1.mp3");
+  // gameOverSound;
+
+  // Music
   // gameMusic[0] = loadSound("./assets/sounds/testMusic.mp3");
 }
 
@@ -109,8 +117,6 @@ function draw() {
 
     if (mode.game === "new shape") {
       preview.newShape();
-      // mode.game = "something";
-      // mode.game = "shape in play";
     }
 
     if (mode.game === "shape in play")

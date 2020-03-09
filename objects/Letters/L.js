@@ -40,6 +40,14 @@ function L() {
     }
   }
 
+  // this.blockPositions = function(left, top, angle) {
+  //   if (angle === 0) {
+  //     return [
+
+  //     ]
+  //   }
+  // }
+
   this.width = function(angle) {
     if ((angle === 0) || (angle === 2)) {
       return 2;

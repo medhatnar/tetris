@@ -26,8 +26,8 @@ function collideRectRect (x, y, w, h, x2, y2, w2, h2) {
 };
 
 function randomLetter() {
-  const selection = randRange(0, 8);
-  // const selection = 0;
+  // const selection = randRange(0, 7);
+  const selection = 2;
   if (selection === 0) return new I();
   else if (selection === 1) return new J();
   else if (selection === 2) return new L();
@@ -35,7 +35,6 @@ function randomLetter() {
   else if (selection === 4) return new Z();
   else if (selection === 5) return new T();
   else if (selection === 6) return new O();
-
 }
 
 function transistionToFullScreen() {

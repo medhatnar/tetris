@@ -85,6 +85,12 @@ function Grid() {
 
   this.absorbCurrentShape = function() {
     if (currentShape.top === (this.height - currentShape.height)) {
+      const blockColor = currentShape.letter.color;
+      const blockPositions = currentShape.letter.blockPositions(currentShape.left, currentShape.top, currentShape.angle);
+      // console.log(blockPositions);
+      for (let i = 0; i < 4 ; i++) {
+        grid.gridArray[blockPositions[i][1]][blockPositions[i][0]] = blockColor;
+      }
       mode.game = "new shape";
     }
   }

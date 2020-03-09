@@ -14,7 +14,6 @@ function Dev() {
         mode.audioOn = true;
         gameArea.positionGameArea();
         mode.main = "game";
-        // mode.game = "new shape";
         // gameMusic[0].play();
       }
     }
