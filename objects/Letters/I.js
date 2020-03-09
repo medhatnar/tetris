@@ -27,5 +27,4 @@ function I() {
     if(angle === 0) return 1;
     else if (angle === 1) return 4;
   }
-
 }

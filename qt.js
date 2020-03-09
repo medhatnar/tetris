@@ -78,7 +78,7 @@ const display = new Display();
 const grid = new Grid();
 const dev = new Dev();
 const fallIntervalTimer = new FallIntervalTimer();
-let currentShape = new CurrentShape(7, -4, randomLetter());
+let currentShape = new CurrentShape(7, 0, randomLetter());
 const preview = new Preview();
 
 function setup() {
@@ -122,6 +122,10 @@ function draw() {
     if (mode.game === "shape in play")
     {
       currentShape.move();
+      // grid.absorbCurrentShape();
+    }
+
+    if (mode.game === "update grid") {
       grid.absorbCurrentShape();
     }
     
