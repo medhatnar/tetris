@@ -116,6 +116,7 @@ function OpeningPrompt() {
         if (this.fullScreenPreSelected === false && this.enableFullScreen) {
           transistionToFullScreen();
         }
+        gameArea.positionGameArea();
         mode.main = "title screen";
       }
     }
