@@ -35,7 +35,6 @@ class CurrentShape extends Shape {
       if (
         keyIsDown(LEFT_ARROW) 
         && !(keyIsDown(RIGHT_ARROW) || keyIsDown(DOWN_ARROW) || keyIsDown(32))
-        && this.left > 0
         && !(this.collideH(-1))
       ) {
         this.left -= 1;
@@ -44,7 +43,6 @@ class CurrentShape extends Shape {
       else if (
         keyIsDown(RIGHT_ARROW)
         && !(keyIsDown(LEFT_ARROW) || keyIsDown(DOWN_ARROW) || keyIsDown(32))
-        && this.left < (grid.width - this.width)
         && !(this.collideH(1))
       ){
         this.left += 1;

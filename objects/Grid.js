@@ -5,7 +5,7 @@ function Grid() {
   this.width = 15;
   // this.height = 29;
   this.height = 33;
-  this.left = display.borderSize;
+  this.left = display.borderSize - this.unit;
   this.top = -(this.unit * 4);
   const blockOffset = 5;
 
@@ -18,6 +18,8 @@ function Grid() {
       if (i === this.height) gridRow[j] = "Floor";
       else gridRow[j] = null;
     }
+    gridRow.unshift("Wall");
+    gridRow.push("Wall");
     this.gridArray[i] = gridRow;
   }
 
@@ -32,15 +34,15 @@ function Grid() {
     // Vertical Lines
     stroke(`rgba(255, 0, 100, ${fallIntervalTimer.fallCyclePercentage()})`);
   
-    for(let i = 1 ; i < this.width ; i++) {
+    for(let i = 2 ; i <= this.width ; i++) {
       line(this.left + (this.unit * i), 0, this.left + (this.unit * i), gameArea.size - display.floorHeight);
     }
 
     // Horizontal Lines
     stroke("blue");
 
-    for (let i = 1 ; i < this.height; i++) {
-      line(this.left, (this.unit * i), this.left + (this.width * this.unit), (this.unit * i));
+    for (let i = 1 ; i < this.height - 4; i++) {
+      line(this.left + (this.unit), (this.unit * i), this.left + this.unitit  + (this.width * this.unit), (this.unit * i));
     }
 
     // Draw block images for any shapes absorbed into the grid.
@@ -88,18 +90,6 @@ function Grid() {
       ((this.unit * top) + this.top) + blockOffset
     ]
   }
-
-  // this.absorbCurrentShape = function() {
-  //   if (currentShape.top === (this.height - currentShape.height)) {
-  //     const blockColor = currentShape.letter.color;
-  //     const blockPositions = currentShape.letter.blockPositions(currentShape.left, currentShape.top, currentShape.angle);
-  //     console.log(blockPositions);
-  //     for (let i = 0; i < 4 ; i++) {
-  //       grid.gridArray[blockPositions[i][1]][blockPositions[i][0]] = blockColor;
-  //     }
-  //     mode.game = "new shape";
-  //   }
-  // }
 
   this.absorbCurrentShape = function() {
     const blockColor = currentShape.letter.color;
