@@ -25,6 +25,19 @@ function collideRectRect (x, y, w, h, x2, y2, w2, h2) {
   return false;
 };
 
+function randomLetter() {
+  const selection = randRange(0, 8);
+  // const selection = 0;
+  if (selection === 0) return new I();
+  else if (selection === 1) return new J();
+  else if (selection === 2) return new L();
+  else if (selection === 3) return new S();
+  else if (selection === 4) return new Z();
+  else if (selection === 5) return new T();
+  else if (selection === 6) return new O();
+
+}
+
 function transistionToFullScreen() {
   resizeCanvas(screen.width, screen.height);
   const bodyElement = document.getElementById("body");

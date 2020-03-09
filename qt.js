@@ -20,6 +20,7 @@ let gameOverMusic;
 let levelUpMusic;
 
 // IMAGES ////
+// BLOCKS ///////////////
 let darkBlueBlockImage;
 let hotPinkBlockImage;
 let lightPinkBlockImage;
@@ -27,6 +28,17 @@ let purpleBlockImage;
 let skyBlueBlockImage;
 let whiteBlockImage;
 let yellowBlockImage;
+
+// PREVIEW SHAPES //////////////
+let iShapePreviewImage;
+let zShapePreviewImage;
+let oShapePreviewImage;
+let sShapePreviewImage;
+let tShapePreviewImage;
+let jShapePreviewImage;
+let lShapePreviewImage;
+
+
 
 function preload() {
   darkBlueBlockImage = loadImage("./assets/images/blocks/30px Size/Dark_Blue_Block.png");
@@ -36,6 +48,14 @@ function preload() {
   skyBlueBlockImage = loadImage("./assets/images/blocks/30px Size/Sky_Blue_Block.png");
   whiteBlockImage = loadImage("./assets/images/blocks/30px Size/White_Block.png");
   yellowBlockImage = loadImage("./assets/images/blocks/30px Size/Yellow_Block.png");
+
+  iShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/IShape.png");
+  zShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/ZShape.png")
+  tShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/TShape.png");
+  sShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/SShape.png");
+  oShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/OShape.png");
+  lShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/LShape.png");
+  jShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/JShape.png");
 
   // gameMusic[0] = loadSound("./assets/sounds/testMusic.mp3");
 }
@@ -50,7 +70,8 @@ const display = new Display();
 const grid = new Grid();
 const dev = new Dev();
 const fallIntervalTimer = new FallIntervalTimer();
-const currentShape = new CurrentShape(new T());
+const currentShape = new CurrentShape(7, -4, randomLetter());
+const preview = new Preview();
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
@@ -86,8 +107,17 @@ function draw() {
   }
   else if (mode.main === "game") {
 
+    if (mode.game === "new shape") {
+      preview.newShape();
+      // mode.game = "shape in play";
+    }
+
     if (mode.game === "shape in play")
-    currentShape.move();
+    {
+      currentShape.move();
+      grid.absorbCurrentShape();
+    }
+    
     display.display();
   }
 }

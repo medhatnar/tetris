@@ -82,7 +82,10 @@ function Grid() {
       (this.unit * top) + blockOffset
     ]
   }
-  // this.cellPosition = function(left, top) {
-  //   return [this.borderSize + left, top];
-  // }
+
+  this.absorbCurrentShape = function() {
+    if (currentShape.top === ((this.height - currentShape.height) - 1)) {
+      rect(700, 500, 50, 50);
+    }
+  }
 }

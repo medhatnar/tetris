@@ -17,5 +17,6 @@ function Display() {
 
     grid.display();
     currentShape.displayOnGrid();
+    preview.display();
   }
 }

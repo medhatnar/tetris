@@ -1,13 +1,13 @@
 class Shape {
 
-  constructor(letter) {
+  constructor(left, top, letter) {
 
     // Constants
     this.letter = letter;
 
     // Variables
-    this.left = 5;
-    this.top = 5;
+    this.left = left;
+    this.top = top;
     this.angle = 0;
     this.width = letter.width(this.angle);
     this.height = letter.width(this.angle + 1);
@@ -40,11 +40,29 @@ class Shape {
         image(yellowBlockImage, currentCellPosition[0], currentCellPosition[1])
       }
     }
+  }
 
-
-    // for (let i = 0 ; i < blockPositions.length ; i++) {
-      // grid.gridArray[blockPositions[i][1]][blockPositions[i][0]] = this.letter.color;
-      // image(this.letter.image, 200, 200);
-    // }
+  displayInPreview() {
+    if (this.letter.color === "W") {
+      image(iShapePreviewImage, this.left, this.top);
+    }
+    else if (this.letter.color === "DB") {
+      image(oShapePreviewImage, this.left, this.top);
+    }
+    else if (this.letter.color === "HP") {
+      image(sShapePreviewImage, this.left, this.top);
+    }
+    else if (this.letter.color === "LP") {
+      image(lShapePreviewImage, this.left, this.top);
+    }
+    else if (this.letter.color === "P") {
+      image(jShapePreviewImage, this.left, this.top);
+    }
+    else if (this.letter.color === "SB") {
+      image(zShapePreviewImage, this.left, this.top);
+    }
+    else if (this.letter.color === "Y") {
+      image(tShapePreviewImage, this.left, this.top);
+    }    
   }
 }

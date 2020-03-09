@@ -1,8 +1,8 @@
 class CurrentShape extends Shape {
 
   // Constructor
-  constructor(letter) {
-    super(letter);
+  constructor(left, top, letter) {
+    super(left, top, letter);
 
     // Constants
     this.playerControlInterval = 10;
