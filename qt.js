@@ -65,6 +65,7 @@ function preload() {
   moveSound = loadSound("./assets/sounds/move.mp3");
   gridAbsorbSound = loadSound("./assets/sounds/gridAbsorb0.mp3");
   rotateSound = loadSound("./assets/sounds/rotate0.mp3");
+  cannotRotateSound = loadSound("./assets/sounds/cannotRotate1.mp3");
 
   // gameOverSound;
 
