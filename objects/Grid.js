@@ -84,8 +84,8 @@ function Grid() {
   }
 
   this.absorbCurrentShape = function() {
-    if (currentShape.top === ((this.height - currentShape.height) - 1)) {
-      rect(700, 500, 50, 50);
+    if (currentShape.top === (this.height - currentShape.height)) {
+      mode.game = "new shape";
     }
   }
 }

@@ -26,12 +26,13 @@ function Preview() {
     }
   }
 
-  // this.newShape = function() {
-  //   shapes[0].left = 7;
-  //   shapes[0].top = -4;
-  //   currentShape = shapes.pop();
-  //   // shapes[0].top = 50;
-  //   // shapes[1]
-  //   // shapes.push(new Shape(shapeImageLeft, ))
-  // }
+  this.newShape = function() {
+    currentShape = new CurrentShape(7, -4, shapes[0].letter);
+    shapes.shift();
+    shapes[0].top = 50;
+    shapes[1].top = 150;
+    shapes[2].top = 250;
+    shapes.push(new Shape(shapeImageLeft, 350, randomLetter()));
+    mode.game = "shape in play";
+  }
 }

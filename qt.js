@@ -70,7 +70,7 @@ const display = new Display();
 const grid = new Grid();
 const dev = new Dev();
 const fallIntervalTimer = new FallIntervalTimer();
-const currentShape = new CurrentShape(7, -4, randomLetter());
+let currentShape = new CurrentShape(7, -4, randomLetter());
 const preview = new Preview();
 
 function setup() {
@@ -109,6 +109,7 @@ function draw() {
 
     if (mode.game === "new shape") {
       preview.newShape();
+      // mode.game = "something";
       // mode.game = "shape in play";
     }
 
