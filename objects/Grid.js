@@ -107,6 +107,7 @@ function Grid() {
     for (let i = 0; i < 4 ; i++) {
       grid.gridArray[blockPositions[i][1]][blockPositions[i][0]] = blockColor;
     }
+    gridAbsorbSound.play();
     mode.game = "new shape";
   }
 }
