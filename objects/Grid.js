@@ -44,9 +44,12 @@ function Grid() {
       for (let j = 0 ; j < this.gridArray[i].length ; j++) {
         // Check to see if cell is null.
         if (this.gridArray[i][j]) {
+          // Let's locate the exact spot we want to draw our image. 
           const gridCell = this.gridArray[i][j];
           const gridCellLeft = (this.left + (this.unit * j)) + blockOffset;
           const gridCellTop = (this.unit * i) + blockOffset;
+
+          // Now let's draw an image based on the string stored in our grid array. 
           if (gridCell === "P") {
             image(purpleBlockImage, gridCellLeft, gridCellTop);
           }
@@ -72,4 +75,14 @@ function Grid() {
       }
     }
   }
+
+  this.cellPosition = function(left, top) {
+    return [
+      this.left + (this.unit * left) + blockOffset,
+      (this.unit * top) + blockOffset
+    ]
+  }
+  // this.cellPosition = function(left, top) {
+  //   return [this.borderSize + left, top];
+  // }
 }

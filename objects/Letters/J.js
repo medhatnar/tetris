@@ -39,4 +39,13 @@ function J() {
       ]
     }
   }
+
+  this.width = function(angle) {
+    if ((angle === 0) || (angle === 2)) {
+      return 2;
+    }
+    else if ((angle === 1) || (angle === 3)) {
+      return 3;
+    }
+  }
 }

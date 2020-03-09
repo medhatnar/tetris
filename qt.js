@@ -37,7 +37,7 @@ function preload() {
   whiteBlockImage = loadImage("./assets/images/blocks/30px Size/White_Block.png");
   yellowBlockImage = loadImage("./assets/images/blocks/30px Size/Yellow_Block.png");
 
-  // gameMusic[0] = loadSound("./assets/sounds/testMusic.wav");
+  // gameMusic[0] = loadSound("./assets/sounds/testMusic.mp3");
 }
 
 // OBJECTS ////////////////////////////////////////////////////////////////////////////////////
@@ -50,7 +50,7 @@ const display = new Display();
 const grid = new Grid();
 const dev = new Dev();
 const fallIntervalTimer = new FallIntervalTimer();
-const shape = new Shape(new T());
+const currentShape = new CurrentShape(new T());
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
@@ -85,6 +85,9 @@ function draw() {
     titleScreen.enterButtonDown();
   }
   else if (mode.main === "game") {
+
+    if (mode.game === "shape in play")
+    currentShape.move();
     display.display();
   }
 }

@@ -23,4 +23,13 @@ function S() {
       ]
     }
   }
+
+  this.width = function(angle) {
+    if (angle === 0) {
+      return 2;
+    }
+    else {
+      return 3;
+    } 
+  }
 }

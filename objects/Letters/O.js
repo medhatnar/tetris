@@ -14,4 +14,8 @@ function O() {
     ]
   }
 
+  this.width = function(angle) {
+    return 2;
+  }
+
 }

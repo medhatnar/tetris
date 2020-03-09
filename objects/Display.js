@@ -9,15 +9,13 @@ function Display() {
 
     // Draw the walls and the floor.
     stroke('rgba(200, 0, 200, 0.8)');
-    // fill(`rgba(150, 0, 255, ${fallIntervalTimer.fallCyclePercentage()})`);
     fill(`rgba(0, 0, 0, 0)`);
     strokeWeight(5); 
     rect(0, 0, this.borderSize, gameArea.size);
-    // rect(borderSize, gameArea.size - borderSize, grid.unit * grid.width, borderSize);
     rect(0, gameArea.size - this.floorHeight, (this.borderSize * 2) + (grid.unit * grid.width), this.floorHeight);
     rect(this.borderSize + (grid.width * grid.unit), 0, this.borderSize, gameArea.size);
 
-    shape.displayOnGrid();
     grid.display();
+    currentShape.displayOnGrid();
   }
 }
