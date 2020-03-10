@@ -12,6 +12,7 @@ let moveSound;
 let gameOverSound;
 let gridAbsorbSound;
 let rotateSound;
+let fullLineSound;
 
 // MUSIC ////
 const gameMusic = [];
@@ -61,11 +62,11 @@ function preload() {
 
   // Sound Effects
   // lineCollapseSound;
-  // cannotRotateSound;
   moveSound = loadSound("./assets/sounds/move.mp3");
   gridAbsorbSound = loadSound("./assets/sounds/gridAbsorb0.mp3");
   rotateSound = loadSound("./assets/sounds/rotate0.mp3");
   cannotRotateSound = loadSound("./assets/sounds/cannotRotate1.mp3");
+  fullLineSound = loadSound("./assets/sounds/fullLine0.mp3");
 
   // gameOverSound;
 

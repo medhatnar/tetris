@@ -124,6 +124,7 @@ function Grid() {
     
     if (fullLines.length !== 0) {
       mode.game = "line collapse";
+      fullLineSound.play();
     }
     else mode.game = "new shape";
   }
