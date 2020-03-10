@@ -12,33 +12,22 @@ function collidePointRect (pointX, pointY, x, y, xW, yW) {
   return false;
 }
 
-
-function collideRectRect (x, y, w, h, x2, y2, w2, h2) {
-  //2d
-  //add in a thing to detect rectMode CENTER
-  if (x + w >= x2 &&    // r1 right edge past r2 left
-      x <= x2 + w2 &&    // r1 left edge past r2 right
-      y + h >= y2 &&    // r1 top edge past r2 bottom
-      y <= y2 + h2) {    // r1 bottom edge past r2 top
-        return true;
-  }
-  return false;
-};
+function randomLetter() {
+  // const selection = randRange(0, 7);
+  const selection = 0;
+  if (selection === 0) return new I();
+  else if (selection === 1) return new J();
+  else if (selection === 2) return new L();
+  else if (selection === 3) return new S();
+  else if (selection === 4) return new Z();
+  else if (selection === 5) return new T();
+  else if (selection === 6) return new O();
+}
 
 function transistionToFullScreen() {
   resizeCanvas(screen.width, screen.height);
-  windowWidth = screen.width;
-  windowHeight = screen.height;
   const bodyElement = document.getElementById("body");
   bodyElement.requestFullscreen();
-}
-
-function pauseEverything() {
-  player.pause = true;
-  enemySet.pause = true;
-  for (const enemyIndex in enemySet.enemies) {
-    enemySet.enemies[enemyIndex].pause = true;
-  }
 }
 
 function randRange(min, max) {
@@ -51,18 +40,4 @@ function randRange(min, max) {
   else if (min >= 0) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
-}
-
-function minimum(min, comparative) {
-  if (min > comparative) {
-    return min;
-  }
-  else return comparative;
-}
-
-function maximum(max, comparative) {
-  if (max < comparative) {
-    return max;
-  }
-  else return comparative;
 }

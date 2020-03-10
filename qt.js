@@ -1,236 +1,146 @@
-// cd Desktop/Code/2020/'04 Abyss'
-
-// GLOBAL VARIABLES
-
-// Window size and minimum display
-let windowWidth = window.innerWidth;
-let windowHeight = window.innerHeight;
-const minWidth = 800;
-const minHeight = 600;
-
-// Get rid of scroll bars
+// Initialization
 document.documentElement.style.overflow = "hidden";
 
-// Mode and Objects
-let mode = "screen check";
-let gameArea;
-let titleScreen;
-let survivalClock;
-let player;
-let enemySet;
+// ASSETS /////////////////////////////////////////////////////////////////////////////////////
+// FONTS ///////////
+const font0 = "VT323";
 
-// VARIABLES
-// Opening Prompt
-let yesButtonFill;
-let noButtonFill;
+// SOUNDEFFECTS ////
+let lineCollapseSound;
+let cannotRotateSound;
+let moveSound;
+let gameOverSound;
+let gridAbsorbSound;
+let rotateSound;
+let fullLineSound;
 
-// Game
-let survivalTime = 0;
-let explosion = false;
+// MUSIC ////
+const gameMusic = [];
+let titleScreenMusic;
+let scoreScreenMusic;
+let gameOverMusic;
+let levelUpMusic;
 
-// Assets //////////////////////////////////////////////////////////////////////////////////////////
-// Images
-const arrowImages = [];
+// IMAGES ////
+// BLOCKS ///////////////
+let darkBlueBlockImage;
+let hotPinkBlockImage;
+let lightPinkBlockImage;
+let purpleBlockImage;
+let skyBlueBlockImage;
+let whiteBlockImage;
+let yellowBlockImage;
 
-// Sounds
-let music;
-let playerShootsSound;
-let enemyEntersSound;
-let enemyHitSound0;
-let enemyHitSound1;
-let enemyExplodesSound;
+// PREVIEW SHAPES //////////////
+let iShapePreviewImage;
+let zShapePreviewImage;
+let oShapePreviewImage;
+let sShapePreviewImage;
+let tShapePreviewImage;
+let jShapePreviewImage;
+let lShapePreviewImage;
 
 function preload() {
 
-  // Arrow Images
-  arrowImages[0] = loadImage("./assets/images/arrowUp.png");
-  arrowImages[1] = loadImage("./assets/images/arrowRight.png");
-  arrowImages[2] = loadImage("./assets/images/arrowDown.png");
-  arrowImages[3] = loadImage("./assets/images/arrowLeft.png");
+  // Block Images
+  darkBlueBlockImage = loadImage("./assets/images/blocks/30px Size/Dark_Blue_Block.png");
+  hotPinkBlockImage = loadImage("./assets/images/blocks/30px Size/Hot_Pink_Block.png");
+  lightPinkBlockImage = loadImage("./assets/images/blocks/30px Size/Light_Pink_Block.png");
+  purpleBlockImage = loadImage("./assets/images/blocks/30px Size/Purple_Block.png");
+  skyBlueBlockImage = loadImage("./assets/images/blocks/30px Size/Sky_Blue_Block.png");
+  whiteBlockImage = loadImage("./assets/images/blocks/30px Size/White_Block.png");
+  yellowBlockImage = loadImage("./assets/images/blocks/30px Size/Yellow_Block.png");
 
-  // Title Screen Music
-  music = loadSound("./assets/sounds/music/music.mp3");
+  // Preview Shape Images
+  iShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/IShape.png");
+  zShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/ZShape.png")
+  tShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/TShape.png");
+  sShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/SShape.png");
+  oShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/OShape.png");
+  lShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/LShape.png");
+  jShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/JShape.png");
 
-  // Sound effects /////////////////////////////////////////////////////////////////////
-  // Player
-  playerAttacksSound = loadSound("./assets/sounds/soundEffects/playerAttacks.wav");
+  // Sound Effects
+  // lineCollapseSound;
+  moveSound = loadSound("./assets/sounds/move.mp3");
+  gridAbsorbSound = loadSound("./assets/sounds/gridAbsorb0.mp3");
+  rotateSound = loadSound("./assets/sounds/rotate0.mp3");
+  cannotRotateSound = loadSound("./assets/sounds/cannotRotate1.mp3");
+  fullLineSound = loadSound("./assets/sounds/fullLine0.mp3");
 
-  // Enemy ////////////////////////////////////////////////////////////////////////////
-  enemyEntersSound = loadSound("./assets/sounds/soundEffects/enemyEnters.wav");
-  enemyHitSound0 = loadSound("./assets/sounds/soundEffects/enemyHit0.wav");
-  enemyHitSound0.setVolume(0.5);
-  enemyHitSound1 = loadSound("./assets/sounds/soundEffects/enemyHit1.wav");
-  enemyHitSound1.setVolume(0.5);
-  enemyExplodesSound = loadSound("./assets/sounds/soundEffects/enemyExplosion.mp3");
+  // gameOverSound;
+
+  // Music
+  // gameMusic[0] = loadSound("./assets/sounds/testMusic.mp3");
 }
 
+// OBJECTS ////////////////////////////////////////////////////////////////////////////////////
+const gameArea = new GameArea();
+const windowObject = new Window();
+const mode = new Mode();
+const openingPrompt = new OpeningPrompt();
+const titleScreen = new TitleScreen();
+const display = new Display();
+const grid = new Grid();
+const dev = new Dev();
+const fallIntervalTimer = new FallIntervalTimer();
+let currentShape = new CurrentShape(7, 0, randomLetter());
+const preview = new Preview();
+const game = new Game();
 
-// Setup ////////////////////////////////////////////////////////////////////////////////////////////
+
 function setup() {
-
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(window.innerWidth, window.innerHeight);
   background(0);
-  fill(255);
-  textFont("Dosis");
-  textSize(20);
-
-  // Screen is too small.
-  if (screen.width < minWidth || screen.height < minHeight) {
-    text(`Sorry, this game requires at least a ${minWidth} x ${minHeight} pixel display.`, 50, 50, windowWidth - 100, windowHeight);
-    text(`Your current device's screen: ${screen.width} x ${screen.height} display.`, 50, 200, windowWidth - 100, windowHeight);
-  }
-  else {
-    mode = "opening prompt";
-  }
+  windowObject.screenSize();
 }
 
 function draw() {
 
-  if (mode !== "screen check" && explosion === false) background(0);
- 
-  // OPENING PROMPT ////////////////////////////////////////////////////////////////////////////////////////
-  if (mode === "opening prompt") {
-    // Window is too small?
-    if (windowWidth < minWidth || windowHeight < minHeight) {
-      // Instructions
-      textAlign(CENTER, TOP);
-      textSize(20);
-      fill(255);
-      text(`Sorry, this game requires at least an ${minWidth} x ${minHeight} pixel display.`, 50, 50, windowWidth - 100, windowHeight);
-      text(`Your current window: ${window.innerWidth} x ${window.innerHeight}.`, 50, 150, windowWidth - 100, windowHeight);
-      text("Please resize your window to an appropriate display and REFRESH THE PAGE.", 50, 250, windowWidth - 50, windowHeight);
-      text("Alternatively, enable fullscreen.", 50, 350, windowWidth - 50, windowHeight); 
+  // Redraw the background as black every frame. 
+  background(0);
 
-      // Full Screen Button
-      textSize(25); 
-      textAlign(CENTER, CENTER);
-      const fsbcoordinates0 = [center(windowWidth, 300), 450, 300, 50];
-      stroke(255);
-      strokeWeight(3);
-      fill(0);
-      rect(fsbcoordinates0[0], fsbcoordinates0[1], fsbcoordinates0[2], fsbcoordinates0[3]);  
+  // We set the 0,0 coordinate to be relative to the GameArea, though initially this is just set to 0, 0 anyway. 
+  // This won't matter until we reach the main mode of "title screen". 
+  // The values 'top' and 'left' for 'gameArea' are set within the 'handleMouse' method of opening prompt. 
+  translate(gameArea.left, gameArea.top);
 
-      if (collidePointRect(mouseX, mouseY, fsbcoordinates0[0], fsbcoordinates0[1], fsbcoordinates0[2], fsbcoordinates0[3])) {
-        fill(255);
-        cursor("pointer");
-        // Full screen enabled and transistion to game setup and then title screen.
-        if (mouseIsPressed) {
-          mode = "game setup";
-          cursor("default");
-          transistionToFullScreen();
-        }
-      }
-      else {
-        fill(100);
-        cursor("default");
-      }
-      strokeWeight(0); 
-      text("ENABLE FULLSCREEN", fsbcoordinates0[0], fsbcoordinates0[1], fsbcoordinates0[2], fsbcoordinates0[3]);
-    }
-    // Window is minimum size or larger.
-    else {
-      textAlign(CENTER, CENTER);
-      textSize(40);
 
-      // Prompt.
-      fill(255);
-      text("ENABLE FULLSCREEN?", center(windowWidth, 300), center(windowHeight, 100) - 40, 300, 100 );
-      
-      // Yes and No Buttons.
-      stroke(255);
-      strokeWeight(2);
-      fill(0);
-      yesBoxCoords = [center(windowWidth, 100) - 60, center(windowHeight, 50) + 40, 100, 50];
-      noBoxCoords = [center(windowWidth, 100) + 60, center(windowHeight, 50) + 40, 100, 50];
-      rect(yesBoxCoords[0], yesBoxCoords[1], yesBoxCoords[2], yesBoxCoords[3]);
-      rect(noBoxCoords[0],noBoxCoords[1],noBoxCoords[2],noBoxCoords[3] );
 
-      // Click yes for full screen.
-      if (collidePointRect(mouseX, mouseY, yesBoxCoords[0], yesBoxCoords[1], yesBoxCoords[2], yesBoxCoords[3])) {
-        yesButtonFill = 255;
-        noButtonFill = 0;
-        cursor("pointer");
-        // Full screen enabled and transistion to game setup and then title screen.
-        if (mouseIsPressed) {
-          mode = "game setup";
-          cursor("default");
-          transistionToFullScreen();
-        }
-      }
-      // Click no for regular window view. 
-      else if (collidePointRect(mouseX, mouseY,noBoxCoords[0],noBoxCoords[1],noBoxCoords[2],noBoxCoords[3])) {
-        noButtonFill = 255;
-        yesButtonFill = 0;
-        cursor("pointer");
-        // Transistion to game setup and then title screen.
-        if (mouseIsPressed) {
-          mode = "game setup";
-          cursor("default");
-        }
-      }
-      else {
-        yesButtonFill = 0;
-        noButtonFill = 0;
-      }
-      fill(yesButtonFill);
-      text("YES", yesBoxCoords[0], yesBoxCoords[1], yesBoxCoords[2], yesBoxCoords[3]);
-      fill(noButtonFill);
-      text("NO", noBoxCoords[0],noBoxCoords[1],noBoxCoords[2],noBoxCoords[3] );
-    }      
+  if (mode.main === "window test") {
+    windowObject.windowSize();
   }
-  else if (mode === "game setup") {
-    gameArea = new GameArea(windowWidth, windowHeight);
-    // titleScreen = new TitleScreen(gameArea.width, gameArea.height, arrowImages);
-    survivalClock = new SurvivalClock(gameArea.width, gameArea.height);
-    player = new Player(gameArea.width, gameArea.height);
-    enemySet = new EnemySet();
-    music.play();
-    music.loop();
-    mode = "title screen";
+  else if (mode.main === "dev") {
+    dev.straightToGame();
   }
-  else if (mode === "title screen") {
-    translate(gameArea.corner[0], gameArea.corner[1]);
-    titleScreen.display();
+  else if (mode.main === "opening prompt") {
+    openingPrompt.handleMouse();
+    openingPrompt.display();
   }
-  else if (mode === "game") {
-    // Set up the game area and move the coordinate grid to it's top left corner.
-    if (explosion === false) gameArea.display();
-    else {music.stop()}
-    translate(gameArea.corner[0], gameArea.corner[1]);
-
-    survivalClock.display();
-
-    enemySet.generateEnemies();
-    enemySet.checkIfEnemiesCollide(player);
-
-    for (const enemy in enemySet.enemies) {
-      enemySet.enemies[enemy].move();
-      enemySet.enemies[enemy].display();
+  else if (mode.main === "title screen") {
+    gameArea.display();
+    titleScreen.enterButtonDown();
+  }
+  else if (mode.main === "game") {
+    if (mode.game === "new shape") {
+      preview.newShape();
     }
 
-    player.move();
-    player.display();
-    player.attack();
-
-    // Cover the left and right edges with black blocks
-    if (gameArea.corner[0] > 0) {
-      fill(0);
-      strokeWeight(0);
-      rect(-gameArea.corner[0], -gameArea.corner[1], gameArea.corner[0], windowHeight);
-      rect(gameArea.width, gameArea.corner[1], windowWidth - gameArea.width, windowHeight);
+    if (mode.game === "shape in play")
+    {
+      currentShape.move();
     }
-  }
-  else if (mode === "game over") {
-    translate(gameArea.corner[0], gameArea.corner[1]);
-    textSize(100);
-    textFont("Dosis");
-    strokeWeight(20);
-    stroke(255);
-    fill(0);
-    text("GAME OVER", 0, gameArea.height / 4, gameArea.width, 200);
-    textSize(50);
-    text(`Survival Time:    ${survivalClock.timeString}`, 0, gameArea.height / 2, gameArea.width, 100);
-    textSize(35);
-    text("Refresh the page to play again.", 0, gameArea.height - 100, gameArea.width, 50);
+
+    if (mode.game === "update grid") {
+      grid.absorbCurrentShape();
+      grid.lineCheck();
+    }
+
+    if (mode.game === "line collapse") {
+      // grid.lineCollapse();
+    }
+    
+    display.display();
   }
 }
+
