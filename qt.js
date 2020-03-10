@@ -87,6 +87,7 @@ let currentShape = new CurrentShape(7, 0, randomLetter());
 const preview = new Preview();
 const game = new Game();
 
+
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
   background(0);
@@ -131,6 +132,7 @@ function draw() {
 
     if (mode.game === "update grid") {
       grid.absorbCurrentShape();
+      console.log(grid.lineCheck());
     }
     
     display.display();

@@ -26,7 +26,6 @@ class CurrentShape extends Shape {
     const blockPositions = this.letter.blockPositions(this.left, this.top, this.angle);
     for (let i = 0 ; i < 4 ; i++ ) {
       if (grid.gridArray[(blockPositions[i][1] + 1)][blockPositions[i][0]] !== null) {
-        console.log("collide!")
         return true;
       }
     }

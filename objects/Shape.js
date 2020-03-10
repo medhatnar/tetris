@@ -48,7 +48,7 @@ class Shape {
       image(oShapePreviewImage, this.left, this.top);
     }
     else if (this.letter.color === "HP") {
-      image(sShapePreviewImage, this.left, this.top);
+      image(zShapePreviewImage, this.left, this.top);
     }
     else if (this.letter.color === "LP") {
       image(lShapePreviewImage, this.left, this.top);
@@ -57,7 +57,7 @@ class Shape {
       image(jShapePreviewImage, this.left, this.top);
     }
     else if (this.letter.color === "SB") {
-      image(zShapePreviewImage, this.left, this.top);
+      image(sShapePreviewImage, this.left, this.top);
     }
     else if (this.letter.color === "Y") {
       image(tShapePreviewImage, this.left, this.top);

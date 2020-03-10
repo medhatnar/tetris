@@ -102,4 +102,30 @@ function Grid() {
     gridAbsorbSound.play();
     mode.game = "new shape";
   };
+
+  this.lineCheck = function() {
+
+    const fullLines = [];
+    // Note we use the 'height' variable, as we don't want to include the "floor" row in our check.
+    // We also are not checking above the screen, hence 'i' starting at 4. 
+    for (let i = 4 ; i < this.height ; i++) {
+      // We also don't want to check the "wall" cells in a given row.
+      for (let j = 1 ; j < this.width + 1 ; j++) {
+        // If we get a single null cell, we know the line is not full. 
+        if (this.gridArray[i][j] === null) break;
+
+        // If we reach the end of a row and have not gotten a null value, we know it's full. 
+        // Thus we add the row number to our 'fullLines' array. 
+        if (j === this.width) {
+          fullLines.push(i);
+        }
+      }
+    }
+    
+    if (fullLines.length !== 0) {
+      for (let i = 0 ; i < fullLines.length ; i++) {
+        for (let j = 0 ; j)
+      }
+    }
+  }
 }
