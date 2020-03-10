@@ -14,6 +14,7 @@ function Dev() {
         mode.audioOn = true;
         gameArea.positionGameArea();
         mode.main = "game";
+        // mode.main = "update Grid";
         // gameMusic[0].play();
       }
     }

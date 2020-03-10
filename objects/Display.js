@@ -20,5 +20,7 @@ function Display() {
     currentShape.displayOnGrid();
     preview.display();
     game.display();
+    if (mode.game === "line collapse") grid.lineCollapse();
+
   }
 }

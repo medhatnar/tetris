@@ -22,6 +22,8 @@ function Grid() {
     this.gridArray[i] = gridRow;
   }
 
+  const fullLines = [];
+
   // METHODS
   this.display = function() {
     strokeWeight(3);
@@ -100,12 +102,10 @@ function Grid() {
       grid.gridArray[blockPositions[i][1]][blockPositions[i][0]] = blockColor;
     }
     gridAbsorbSound.play();
-    mode.game = "new shape";
   };
 
   this.lineCheck = function() {
 
-    const fullLines = [];
     // Note we use the 'height' variable, as we don't want to include the "floor" row in our check.
     // We also are not checking above the screen, hence 'i' starting at 4. 
     for (let i = 4 ; i < this.height ; i++) {
@@ -123,8 +123,24 @@ function Grid() {
     }
     
     if (fullLines.length !== 0) {
+      mode.game = "line collapse";
+    }
+    else mode.game = "new shape";
+  }
+
+  this.lineCollapse = function() {
+    const percentage = fallIntervalTimer.fallCyclePercentage();
+    if (percentage < 0.5) {
+      
+      strokeWeight(0);
+      fill(`rgba(255, 255, 255, ${percentage * 2})`);
       for (let i = 0 ; i < fullLines.length ; i++) {
-        for (let j = 0 ; j)
+        rect(
+          this.left + this.unit, 
+          this.top + (this.unit * fullLines[i]), 
+          this.unit * this.width, 
+          this.unit
+        );
       }
     }
   }

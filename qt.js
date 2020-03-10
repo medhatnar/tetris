@@ -132,7 +132,11 @@ function draw() {
 
     if (mode.game === "update grid") {
       grid.absorbCurrentShape();
-      console.log(grid.lineCheck());
+      grid.lineCheck();
+    }
+
+    if (mode.game === "line collapse") {
+      // grid.lineCollapse();
     }
     
     display.display();

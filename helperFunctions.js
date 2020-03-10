@@ -13,8 +13,8 @@ function collidePointRect (pointX, pointY, x, y, xW, yW) {
 }
 
 function randomLetter() {
-  const selection = randRange(0, 7);
-  // const selection = 0;
+  // const selection = randRange(0, 7);
+  const selection = 0;
   if (selection === 0) return new I();
   else if (selection === 1) return new J();
   else if (selection === 2) return new L();

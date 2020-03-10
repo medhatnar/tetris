@@ -5,7 +5,8 @@ class CurrentShape extends Shape {
     super(left, top, letter);
 
     // Constants
-    this.playerControlInterval = 10;
+    this.playerControlInterval = 3;
+    // this.playerControlInterval = 10;
   }
 
   // Methods
