@@ -67,7 +67,7 @@ function TitleScreen() {
 
 	this.alternateTitleColors = function(colors) {
 		push();
-		frameRate(3);
+		frameRate(5);
 		angleMode(DEGREES);
 		textFont('VT323');
 		textSize(350);
