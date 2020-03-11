@@ -37,7 +37,17 @@
     <!-- <script src="qt.js"></script> -->
     <!-- <script src="test.js"></script> -->
 
-  </head>
-  <body id="body">
-  </body>
+			// Initialize Firebase
+			firebase.initializeApp(firebaseConfig);
+
+			var db = firebase.database();
+
+			db.ref('/color/')
+				.once('value')
+				.then(function(snapshot) {
+					console.log(snapshot.val());
+				});
+		</script>
+		<script src="./objects/TitleScreen.js"></script>
+	</body>
 </html>
