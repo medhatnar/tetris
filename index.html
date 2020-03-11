@@ -1,45 +1,77 @@
 <!DOCTYPE html>
 <html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet"> 
-    <title>QT</title>
-    <style> body {padding: 0; margin: 0;} </style>
-    <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
-    <script src="p5.js"></script>
-    <script src="p5.sound.js"></script>
-    <script src="./helperFunctions.js"></script>
-    <script src="./objects/TitleScreen.js"></script>
-    <!-- <script src="qt.js"></script> -->
-    <!-- <script src="./objects/TitleScreen.js"></script> -->
-    <script src="./objects/GameArea.js"></script>
-    <script src="./objects/Window.js"></script>
-    <script src="./objects/Mode.js"></script>
-    <script src="./objects/OpeningPrompt.js"></script>
-    <script src="./objects/TitleScreenDreeVer.js"></script>
-    <script src="./objects/Display.js"></script>
-    <script src="./objects/Grid.js"></script>
-    <script src="./objects/Dev.js"></script>
-    <script src="./objects/FallIntervalTimer.js"></script>
-    <script src="./objects/Shape.js"></script>
-    <script src="./objects/Letters/I.js"></script>
-    <script src="./objects/Letters/O.js"></script>
-    <script src="./objects/Letters/T.js"></script>
-    <script src="./objects/Letters/Z.js"></script>
-    <script src="./objects/Letters/S.js"></script>
-    <script src="./objects/Letters/L.js"></script>
-    <script src="./objects/Letters/J.js"></script>
-    <script src="./objects/CurrentShape.js"></script>
-    <script src="./objects/Preview.js"></script>
-    <script src="./objects/Game.js"></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-app.js"></script>
-    <script src="/__/firebase/init.js"></script> -->
-    <!-- <script src="qt.js"></script> -->
-    <!-- <script src="test.js"></script> -->
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://fonts.googleapis.com/css?family=VT323&display=swap"
+			rel="stylesheet"
+		/>
+		<title>QT</title>
+		<style>
+			body {
+				padding: 0;
+				margin: 0;
+			}
+		</style>
+		<link
+			href="https://fonts.googleapis.com/css?family=VT323&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="p5.js"></script>
+		<script src="p5.sound.js"></script>
+		<script src="./helperFunctions.js"></script>
+		<!-- <script src="qt.js"></script> -->
+		<script src="./objects/GameArea.js"></script>
+		<script src="./objects/Window.js"></script>
+		<script src="./objects/Mode.js"></script>
+		<script src="./objects/OpeningPrompt.js"></script>
+		<script src="./objects/TitleScreenDreeVer.js"></script>
+		<script src="./objects/Display.js"></script>
+		<script src="./objects/Grid.js"></script>
+		<script src="./objects/Dev.js"></script>
+		<script src="./objects/FallIntervalTimer.js"></script>
+		<script src="./objects/Shape.js"></script>
+		<script src="./objects/Letters/I.js"></script>
+		<script src="./objects/Letters/O.js"></script>
+		<script src="./objects/Letters/T.js"></script>
+		<script src="./objects/Letters/Z.js"></script>
+		<script src="./objects/Letters/S.js"></script>
+		<script src="./objects/Letters/L.js"></script>
+		<script src="./objects/Letters/J.js"></script>
+		<script src="./objects/CurrentShape.js"></script>
+		<script src="./objects/Preview.js"></script>
+		<script src="./objects/Game.js"></script>
+		<!-- <script src="qt.js"></script> -->
+		<!-- <script src="test.js"></script> -->
+	</head>
+	<body id="body">
+		<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+		<script>
+			// Your web app's Firebase configuration
+			var firebaseConfig = {
+				apiKey: 'AIzaSyC_-xfvLpAjXCqoRf85J-Mx08LvWcGJNE4',
+				authDomain: 'queertetris.firebaseapp.com',
+				databaseURL: 'https://queertetris.firebaseio.com',
+				projectId: 'queertetris',
+				storageBucket: 'queertetris.appspot.com',
+				messagingSenderId: '12670714567',
+				appId: '1:12670714567:web:4b0a95dfd293523e84b4e2',
+			};
 
-  </head>
-  <body id="body">
-  </body>
+			// Initialize Firebase
+			firebase.initializeApp(firebaseConfig);
+
+			var db = firebase.database();
+
+			db.ref('/color/')
+				.once('value')
+				.then(function(snapshot) {
+					console.log(snapshot.val());
+				});
+		</script>
+		<script src="./objects/TitleScreen.js"></script>
+	</body>
 </html>

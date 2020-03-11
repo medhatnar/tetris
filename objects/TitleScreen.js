@@ -1,9 +1,6 @@
 var width = 900;
 var height = 900;
 
-let x = 0;
-let y = 0;
-
 var darkBlue = 'rgb(0, 0, 254)';
 var hotPink = 'rgb(255, 33, 140)';
 var lightBlue = 'rgb(91, 207, 250)';
@@ -69,7 +66,6 @@ function TitleScreen() {
 	};
 
 	this.alternateTitleColors = function(colors) {
-		// console.log(firebase.database());
 		push();
 		frameRate(3);
 		angleMode(DEGREES);
@@ -123,24 +119,12 @@ function preload() {
 }
 
 function setup() {
-	createCanvas(900, 900, WEBGL);
+	createCanvas(900, 900);
 }
 
 function draw() {
-  
   background(0);
-  rotateX(frameCount * 0.01);
-  rotateY(frameCount * 0.01);
-  fill(hotPink);
-  box(50);
-  fill(lightBlue);
-  ellipse(x, y, 20 + random(5), 20 + random(5))
-	// titleScreen.display();
-  // titleScreen.alternateTitleColors(colors);
-
+	titleScreen.display();
+  titleScreen.alternateTitleColors(colors);
 }
 
-function mouseMoved() {
-  x = x + movedX;
-  y = y + movedY;
-}
