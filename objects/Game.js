@@ -4,14 +4,26 @@ function Game() {
   this.score = 0;
   this.level = 0;
   this.gameOver = false;
+  
+  let intervalCounter = 0;
+
 
   // Methods
   this.display = function() {
+
+    if(mode.game === "level up") {
+      strokeWeight(5);
+      stroke(Math.floor(fallIntervalTimer.fallCyclePercentage() * 255));
+      fill(0);
+      textSize(50);
+      text("LEVEL UP!", 650, 600);
+    }
+
     strokeWeight(2);
+    textFont(font0);
+    textSize(35);
     stroke("magenta");
     fill("blue");
-    textSize(35);
-    textFont(font0);
 
     text(`LEVEL: ${this.level}`, 650, 650);
     text(`SCORE: ${this.score}`, 650, 700);
@@ -22,5 +34,23 @@ function Game() {
     else if (numOfFullLines === 2) this.score += 25;
     else if (numOfFullLines === 3) this.score += 50;
     else if (numOfFullLines === 4) this.score += 100;
+
+    if (this.score >= (10 * (this.level + 1))) {
+      // gameMusic[this.level].stop();
+      this.level += 1;
+      mode.game = "level up";
+    }
+  }
+
+  this.levelUp = function() {
+    if (fallIntervalTimer.lastFrame()) {
+      gridAbsorbSound.play();
+      intervalCounter += 1;
+      if (intervalCounter === 4) {
+        mode.game = "new shape";
+        fallIntervalTimer.fallInterval -= 5;
+        intervalCounter = 0;
+      }
+    }
   }
 }

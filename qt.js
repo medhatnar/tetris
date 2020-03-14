@@ -104,8 +104,6 @@ function draw() {
   // The values 'top' and 'left' for 'gameArea' are set within the 'handleMouse' method of opening prompt. 
   translate(gameArea.left, gameArea.top);
 
-
-
   if (mode.main === "window test") {
     windowObject.windowSize();
   }
@@ -135,11 +133,10 @@ function draw() {
         grid.absorbCurrentShape();
         grid.lineCheck();
       }
-
     }
 
-    if (mode.game === "line collapse") {
-      // grid.lineCollapse();
+    if (mode.game === "level up") {
+      game.levelUp();
     }
     
     display.display();

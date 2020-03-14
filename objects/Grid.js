@@ -161,7 +161,7 @@ function Grid() {
       game.updateScore(fullLines.length);
       fullLines = [];
       this.gridArray = newGridArray;
-      mode.game = "new shape";
+      if (! (mode.game === "level up")) mode.game = "new shape";
     }
   }
 }
