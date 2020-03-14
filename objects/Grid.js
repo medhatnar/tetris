@@ -48,7 +48,7 @@ function Grid() {
       line(
         this.left + this.unit,
         this.unit * i,
-        this.left + this.unit + this.width * this.unit,
+        (this.left + this.unit) + (this.width * this.unit),
         this.unit * i
       );
     }
@@ -86,6 +86,7 @@ function Grid() {
     }
   };
 
+  // The CurrentShape object uses this function to correctly position it's own block images.
   this.cellPosition = function(left, top) {
     return [
       this.left + this.unit * left + blockOffset,
@@ -93,6 +94,7 @@ function Grid() {
     ];
   };
 
+  // Takes the CurrentShape and integrates its blocks into the grid.
   this.absorbCurrentShape = function() {
     const blockColor = currentShape.letter.color;
     const blockPositions = currentShape.letter.blockPositions(
@@ -124,6 +126,7 @@ function Grid() {
       }
     }
     
+    // If there are full lines, we want to switch to the game mode of "line collapse".
     if (fullLines.length !== 0) {
       mode.game = "line collapse";
       fullLineSound.play();
@@ -132,12 +135,12 @@ function Grid() {
   }
 
   this.lineCollapse = function() {
-    console.log(this.gridArray);
     const percentage = fallIntervalTimer.fallCyclePercentage();
+    console.log(percentage);
     if (percentage < 0.9) {
       
       strokeWeight(0);
-      fill(`rgba(255, 255, 255, ${percentage})`);
+      fill(`rgba(255, 255, 255, ${percentage/2})`);
       for (let i = 0 ; i < fullLines.length ; i++) {
         rect(
           this.left + this.unit, 
@@ -152,13 +155,9 @@ function Grid() {
         return (!(fullLines.includes(index)));
       })
       for(let i = 0; i < fullLines.length ; i++) {
-        newGridArray.unshift(["Wall", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "Wall"])
+        newGridArray.unshift(["Wall", null, null, null, null, null, null, null, null, null, null, "Wall"]) 
       }
-      // for(let i = 0; i < fullLines.length ; i++) {
-      //   fullLines.shift(i);
-      // }
       fullLines = [];
-      console.log(fullLines);
       this.gridArray = newGridArray;
       mode.game = "new shape";
     }

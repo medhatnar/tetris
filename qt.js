@@ -66,7 +66,7 @@ function preload() {
   gridAbsorbSound = loadSound("./assets/sounds/gridAbsorb0.mp3");
   rotateSound = loadSound("./assets/sounds/rotate0.mp3");
   cannotRotateSound = loadSound("./assets/sounds/cannotRotate1.mp3");
-  fullLineSound = loadSound("./assets/sounds/fullLine0.mp3");
+  fullLineSound = loadSound("./assets/sounds/fullLine1.mp3");
 
   // gameOverSound;
 
@@ -131,8 +131,11 @@ function draw() {
     }
 
     if (mode.game === "update grid") {
-      grid.absorbCurrentShape();
-      grid.lineCheck();
+      if (fallIntervalTimer.fallNow()) {
+        grid.absorbCurrentShape();
+        grid.lineCheck();
+      }
+
     }
 
     if (mode.game === "line collapse") {
