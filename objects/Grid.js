@@ -1,12 +1,14 @@
 function Grid() {
 
   // CONSTANTS
-  this.unit = 30;
-  this.width = 15;
-  this.height = 33;
+  this.unit = 42;
+  this.width = 10;
+  // this.width = 15;
+  // this.height = 33;
+  this.height = 24;
   this.left = display.borderSize - this.unit;
   this.top = -(this.unit * 4);
-  const blockOffset = 5;
+  const blockOffset = 7;
 
   // VARIABLES
   this.gridArray = [];
@@ -22,7 +24,7 @@ function Grid() {
     this.gridArray[i] = gridRow;
   }
 
-  const fullLines = [];
+  let fullLines = [];
 
   // METHODS
   this.display = function() {
@@ -109,7 +111,7 @@ function Grid() {
     // Note we use the 'height' variable, as we don't want to include the "floor" row in our check.
     // We also are not checking above the screen, hence 'i' starting at 4. 
     for (let i = 4 ; i < this.height ; i++) {
-      // We also don't want to check the "wall" cells in a given row.
+      // We also don't want to check the "wall" cells in a given row. Hence we start 'j' at 1.
       for (let j = 1 ; j < this.width + 1 ; j++) {
         // If we get a single null cell, we know the line is not full. 
         if (this.gridArray[i][j] === null) break;
@@ -130,11 +132,12 @@ function Grid() {
   }
 
   this.lineCollapse = function() {
+    console.log(this.gridArray);
     const percentage = fallIntervalTimer.fallCyclePercentage();
-    if (percentage < 0.5) {
+    if (percentage < 0.9) {
       
       strokeWeight(0);
-      fill(`rgba(255, 255, 255, ${percentage * 2})`);
+      fill(`rgba(255, 255, 255, ${percentage})`);
       for (let i = 0 ; i < fullLines.length ; i++) {
         rect(
           this.left + this.unit, 
@@ -143,6 +146,21 @@ function Grid() {
           this.unit
         );
       }
+    }
+    else if (fallIntervalTimer.lastFrame()) {
+      const newGridArray = this.gridArray.filter((row, index) => {
+        return (!(fullLines.includes(index)));
+      })
+      for(let i = 0; i < fullLines.length ; i++) {
+        newGridArray.unshift(["Wall", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "Wall"])
+      }
+      // for(let i = 0; i < fullLines.length ; i++) {
+      //   fullLines.shift(i);
+      // }
+      fullLines = [];
+      console.log(fullLines);
+      this.gridArray = newGridArray;
+      mode.game = "new shape";
     }
   }
 }

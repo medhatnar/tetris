@@ -22,4 +22,8 @@ function FallIntervalTimer() {
   this.fallCyclePercentage = function() {
     return Math.round(((frameCount - timerStartFrame) % this.fallInterval) * (100 / this.fallInterval)) * 0.01;
   }
+
+  this.lastFrame = function() {
+    return this.fallFrame() === (this.fallInterval - 1);
+  }
 }

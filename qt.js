@@ -43,13 +43,13 @@ let lShapePreviewImage;
 function preload() {
 
   // Block Images
-  darkBlueBlockImage = loadImage("./assets/images/blocks/30px Size/Dark_Blue_Block.png");
-  hotPinkBlockImage = loadImage("./assets/images/blocks/30px Size/Hot_Pink_Block.png");
-  lightPinkBlockImage = loadImage("./assets/images/blocks/30px Size/Light_Pink_Block.png");
-  purpleBlockImage = loadImage("./assets/images/blocks/30px Size/Purple_Block.png");
-  skyBlueBlockImage = loadImage("./assets/images/blocks/30px Size/Sky_Blue_Block.png");
-  whiteBlockImage = loadImage("./assets/images/blocks/30px Size/White_Block.png");
-  yellowBlockImage = loadImage("./assets/images/blocks/30px Size/Yellow_Block.png");
+  darkBlueBlockImage = loadImage("./assets/images/blocks/42pxSize/Dark_Blue_Block.png");
+  hotPinkBlockImage = loadImage("./assets/images/blocks/42pxSize/Hot_Pink_Block.png");
+  lightPinkBlockImage = loadImage("./assets/images/blocks/42pxSize/Light_Pink_Block.png");
+  purpleBlockImage = loadImage("./assets/images/blocks/42pxSize/Purple_Block.png");
+  skyBlueBlockImage = loadImage("./assets/images/blocks/42pxSize/Sky_Blue_Block.png");
+  whiteBlockImage = loadImage("./assets/images/blocks/42pxSize/White_Block.png");
+  yellowBlockImage = loadImage("./assets/images/blocks/42pxSize/Yellow_Block.png");
 
   // Preview Shape Images
   iShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/IShape.png");
@@ -87,7 +87,6 @@ const fallIntervalTimer = new FallIntervalTimer();
 let currentShape = new CurrentShape(7, 0, randomLetter());
 const preview = new Preview();
 const game = new Game();
-
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);

@@ -1,7 +1,7 @@
 function Display() {
   // Constants
   this.borderSize = 50;
-  this.floorHeight = 30;
+  this.floorHeight = 60;
 
   this.display = function() {
 
@@ -21,6 +21,5 @@ function Display() {
     preview.display();
     game.display();
     if (mode.game === "line collapse") grid.lineCollapse();
-
   }
 }
