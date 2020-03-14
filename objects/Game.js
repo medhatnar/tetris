@@ -35,10 +35,11 @@ function Game() {
     else if (numOfFullLines === 3) this.score += 50;
     else if (numOfFullLines === 4) this.score += 100;
 
-    if (this.score >= (10 * (this.level + 1))) {
+    if (this.score >= (100 * (this.level + 1))) {
       // gameMusic[this.level].stop();
       this.level += 1;
       mode.game = "level up";
+      currentShape = null;
     }
   }
 
@@ -48,7 +49,7 @@ function Game() {
       intervalCounter += 1;
       if (intervalCounter === 4) {
         mode.game = "new shape";
-        fallIntervalTimer.fallInterval -= 5;
+        fallIntervalTimer.fallInterval -= 3;
         intervalCounter = 0;
       }
     }

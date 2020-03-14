@@ -84,7 +84,7 @@ const display = new Display();
 const grid = new Grid();
 const dev = new Dev();
 const fallIntervalTimer = new FallIntervalTimer();
-let currentShape = new CurrentShape(7, 0, randomLetter());
+let currentShape = new CurrentShape(5, 0, randomLetter());
 const preview = new Preview();
 const game = new Game();
 

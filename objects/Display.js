@@ -17,7 +17,7 @@ function Display() {
     rect(this.borderSize + (grid.width * grid.unit), 0, this.borderSize, gameArea.size);
 
     grid.display();
-    currentShape.displayOnGrid();
+    if (! (currentShape === null)) currentShape.displayOnGrid();
     preview.display();
     game.display();
     if (mode.game === "line collapse") grid.lineCollapse();

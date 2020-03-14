@@ -27,7 +27,7 @@ function Preview() {
   }
 
   this.newShape = function() {
-    currentShape = new CurrentShape(7, 0, shapes[0].letter);
+    currentShape = new CurrentShape(5, 0, shapes[0].letter);
     shapes.shift();
     shapes[0].top = 50;
     shapes[1].top = 150;
