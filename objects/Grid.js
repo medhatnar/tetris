@@ -136,7 +136,6 @@ function Grid() {
 
   this.lineCollapse = function() {
     const percentage = fallIntervalTimer.fallCyclePercentage();
-    console.log(percentage);
     if (percentage < 0.9) {
       
       strokeWeight(0);
@@ -157,6 +156,9 @@ function Grid() {
       for(let i = 0; i < fullLines.length ; i++) {
         newGridArray.unshift(["Wall", null, null, null, null, null, null, null, null, null, null, "Wall"]) 
       }
+
+      // We want to update the score before we dispose of the full lines in our logic.
+      game.updateScore(fullLines.length);
       fullLines = [];
       this.gridArray = newGridArray;
       mode.game = "new shape";
