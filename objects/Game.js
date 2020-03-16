@@ -3,9 +3,7 @@ function Game() {
   // Variables
   this.score = 0;
   this.level = 0;
-  this.gameOver = false;
   let totalLines = 0;
-  let totalTetris = 0;
   let lastScoreTetris = false;
   
   let intervalCounter = 0;
@@ -56,7 +54,7 @@ function Game() {
 
     totalLines += numOfFullLines;
 
-    if (totalLines % 10 === 0) {
+    if (Math.floor(totalLines / 10) !== this.level) {
       // gameMusic[this.level].stop();
       this.level += 1;
       mode.game = "level up";
