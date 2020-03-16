@@ -30,6 +30,8 @@ let purpleBlockImage;
 let skyBlueBlockImage;
 let whiteBlockImage;
 let yellowBlockImage;
+// ARROWS ///////////////
+let arrows = {};
 
 // PREVIEW SHAPES //////////////
 let iShapePreviewImage;
@@ -59,6 +61,12 @@ function preload() {
   oShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/OShape.png");
   lShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/LShape.png");
   jShapePreviewImage = loadImage("./assets/images/blocks/Preview Shapes/JShape.png");
+
+  // Arrow Images
+  arrows.up = loadImage('../assets/images/arrows/arrowUp.png');
+	arrows.left = loadImage('../assets/images/arrows/arrowLeft.png');
+	arrows.right = loadImage('../assets/images/arrows/arrowRight.png');
+	arrows.down = loadImage('../assets/images/arrows/arrowDown.png');
 
   // Sound Effects
   // lineCollapseSound;
@@ -116,6 +124,7 @@ function draw() {
   }
   else if (mode.main === "title screen") {
     gameArea.display();
+    titleScreen.display();
     titleScreen.enterButtonDown();
   }
   else if (mode.main === "game") {

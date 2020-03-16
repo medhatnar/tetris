@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 function ScoreScreen() {
     this.display = function() {}
 }
@@ -18,8 +17,3 @@ function draw() {
 	ScoreScreen.display();
 }
 
-=======
-
-
-
->>>>>>> 7ef6ea55761fb303d6075ea89ceb562ece160616

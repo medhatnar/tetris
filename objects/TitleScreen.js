@@ -1,5 +1,6 @@
 var width = 900;
 var height = 900;
+// use game area size as ref point
 
 var darkBlue = 'rgb(0, 0, 254)';
 var hotPink = 'rgb(255, 33, 140)';
@@ -23,6 +24,12 @@ var colors = [
 
 function TitleScreen() {
 	var showEnter = true;
+
+	this.enterButtonDown = function() {
+		if (keyIsDown(ENTER)) {
+		  mode.main = "game";
+		}
+	  }
 
 	this.blinkingEnter = function() {
 		if (showEnter) {
@@ -62,6 +69,7 @@ function TitleScreen() {
 		fill(yellow);
 		textSize(40);
 		text('to start', 630, 750);
+		this.alternateTitleColors(colors)
 		pop();
 	};
 
@@ -105,26 +113,5 @@ function TitleScreen() {
 		var lastColor = colors.pop();
 		colors.unshift(lastColor);
 	};
-}
-
-const titleScreen = new TitleScreen();
-
-let arrows = {};
-
-function preload() {
-	arrows.up = loadImage('../assets/images/arrows/arrowUp.png');
-	arrows.left = loadImage('../assets/images/arrows/arrowLeft.png');
-	arrows.right = loadImage('../assets/images/arrows/arrowRight.png');
-	arrows.down = loadImage('../assets/images/arrows/arrowDown.png');
-}
-
-function setup() {
-	createCanvas(900, 900);
-}
-
-function draw() {
-  background(0);
-	titleScreen.display();
-  titleScreen.alternateTitleColors(colors);
 }
 

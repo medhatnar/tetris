@@ -25,7 +25,7 @@
 					authDomain: `${config.projectId}.firebaseapp.com`,
 					databaseURL: `https://${config.projectId}.firebaseio.com`,
 					projectId: config.projectId,
-					storageBucket: `${projectId}.appspot.com`,
+					storageBucket: `${config.projectId}.appspot.com`,
 					messagingSenderId: config.msgSendId,
 					appId: config.appId,
 				};
@@ -38,13 +38,10 @@
 		<script src="p5.js"></script>
 		<script src="p5.sound.js"></script>
 		<script src="./helperFunctions.js"></script>
-		<!-- <script src="qt.js"></script> -->
 		<script src="./objects/GameArea.js"></script>
 		<script src="./objects/Window.js"></script>
 		<script src="./objects/Mode.js"></script>
 		<script src="./objects/OpeningPrompt.js"></script>
-		<script src="./objects/TitleScreen.js"></script>
-		<script src="./objects/TitleScreenDreeVer.js"></script>
 		<script src="./objects/Display.js"></script>
 		<script src="./objects/Grid.js"></script>
 		<script src="./objects/Dev.js"></script>
@@ -60,10 +57,10 @@
 		<script src="./objects/CurrentShape.js"></script>
 		<script src="./objects/Preview.js"></script>
 		<script src="./objects/Game.js"></script>
-		<!-- <script src="qt.js"></script> -->
-		<!-- <script src="test.js"></script> -->
+    <script src="./objects/TitleScreen.js"></script>
+    <script src="qt.js"></script>
 	</head>
 	<body id="body">
 		<!-- <script src="./objects/ScoreScreen.js"></script> -->
 	</body>
-</html>
+  </html>
