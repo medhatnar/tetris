@@ -5,8 +5,11 @@ class CurrentShape extends Shape {
     super(left, top, letter);
 
     // Constants
-    this.playerControlInterval = 5;
+    // this.playerControlInterval = 5;
     // this.playerControlInterval = 10;
+    this.hMoveInterval = 5;
+    this.vMoveInterval = 3;
+    this.upKeyPressed = false;
   }
 
   // Methods
@@ -45,7 +48,7 @@ class CurrentShape extends Shape {
   }
 
   move() {
-    if (frameCount % this.playerControlInterval === 0) {
+    if (frameCount % this.hMoveInterval === 0) {
       if (
         keyIsDown(LEFT_ARROW) 
         && !(keyIsDown(RIGHT_ARROW) || keyIsDown(DOWN_ARROW) || keyIsDown(32))
@@ -62,26 +65,50 @@ class CurrentShape extends Shape {
         this.left += 1;
         moveSound.play();
       }
-      else if (
-        keyIsDown(DOWN_ARROW)
-        && !(keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(32))
-      ) {
-        if (this.collideV()) mode.game = "update grid";
-        else {
-          this.top += 1;
-          moveSound.play();
-        }
-      }
-      // Space bar to rotate. 
-      else if (
-        keyIsDown(32)
-        && !(keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(DOWN_ARROW))
-        && !(this.rotateCollide())
-      ) {        
-        this.angle = (this.angle + 1) % this.letter.angles;
-        rotateSound.play();
-      }
+      // else if (
+      //   keyIsDown(DOWN_ARROW)
+      //   && !(keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(32))
+      // ) {
+      //   if (this.collideV()) mode.game = "update grid";
+      //   else {
+      //     this.top += 1;
+      //     moveSound.play();
+      //   }
+      // }
+      // // Space bar to rotate. 
+      // else if (
+      //   keyIsDown(UP_ARROW)
+      //   && !(keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(DOWN_ARROW))
+      //   && !(this.rotateCollide())
+      // ) {        
+      //   this.angle = (this.angle + 1) % this.letter.angles;
+      //   rotateSound.play();
+      // }
     }
+
+    if (keyIsDown(DOWN_ARROW)
+    && (frameCount % this.vMoveInterval === 0)
+    && !(keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(32))
+    ) {
+      if (this.collideV()) mode.game = "update grid";
+      else {
+        this.top += 1;
+        moveSound.play();
+      }
+    } 
+
+    if (
+      keyIsDown(UP_ARROW)
+      && !(this.upKeyPressed)
+      && !(keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(DOWN_ARROW))
+      && !(this.rotateCollide())
+    ) {
+      this.upKeyPressed = true;        
+      this.angle = (this.angle + 1) % this.letter.angles;
+      rotateSound.play();
+    }
+
+    if (!keyIsDown(UP_ARROW)) this.upKeyPressed = false;
 
     if (fallIntervalTimer.fallNow()) {
       if (this.collideV()) mode.game = "update grid";
