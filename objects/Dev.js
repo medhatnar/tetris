@@ -15,7 +15,7 @@ function Dev() {
         gameArea.positionGameArea();
         mode.main = "game";
         // mode.main = "update Grid";
-        // gameMusic[0].play();
+        gameMusic[0].play();
       }
     }
   }

@@ -2,9 +2,6 @@ function ScoreScreen() {
     this.display = function() {}
 }
 
-const titleScreen = new TitleScreen();
-
-
 function preload() {
 }
 

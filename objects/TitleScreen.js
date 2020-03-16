@@ -1,35 +1,34 @@
-var width = 900;
-var height = 900;
-// use game area size as ref point
-
-var darkBlue = 'rgb(0, 0, 254)';
-var hotPink = 'rgb(255, 33, 140)';
-var lightBlue = 'rgb(91, 207, 250)';
-var lightPink = 'rgb(500, 170, 185)';
-var purple = 'rgb(188, 39, 252)';
-var white = 'rgb(255, 255, 255)';
-var yellow = 'rgb(255, 216, 0)';
-
-var colors = [
-	hotPink,
-	purple,
-	darkBlue,
-	lightBlue,
-	white,
-	lightPink,
-	hotPink,
-	yellow,
-	lightBlue,
-];
-
 function TitleScreen() {
+
+	const colorChangeInterval = 5;
+
+	var darkBlue = 'rgb(0, 0, 254)';
+	var hotPink = 'rgb(255, 33, 140)';
+	var lightBlue = 'rgb(91, 207, 250)';
+	var lightPink = 'rgb(500, 170, 185)';
+	var purple = 'rgb(188, 39, 252)';
+	var white = 'rgb(255, 255, 255)';
+	var yellow = 'rgb(255, 216, 0)';
+
+	var colors = [
+		hotPink,
+		purple,
+		darkBlue,
+		lightBlue,
+		white,
+		lightPink,
+		hotPink,
+		yellow,
+		lightBlue,
+	];
 	var showEnter = true;
 
 	this.enterButtonDown = function() {
 		if (keyIsDown(ENTER)) {
-		  mode.main = "game";
+			mode.main = "game";
+			frameRate(60);
 		}
-	  }
+	}
 
 	this.blinkingEnter = function() {
 		if (showEnter) {
@@ -109,7 +108,7 @@ function TitleScreen() {
 		text('i ', 770, 300);
 		fill(colors[2]);
 		text('s ', 820, 300);
-		// pop();
+		pop();
 		var lastColor = colors.pop();
 		colors.unshift(lastColor);
 	};

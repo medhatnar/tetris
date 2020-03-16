@@ -15,26 +15,27 @@
 			href="https://fonts.googleapis.com/css?family=VT323&display=swap"
 			rel="stylesheet"
 		/>
+	</head>
+	<body id="body">
 		<script src="./server/env.js"></script>
-		<body>
-			<script>
-				var config = config();
 
-				var firebaseConfig = {
-					apiKey: config.firebase_key,
-					authDomain: `${config.projectId}.firebaseapp.com`,
-					databaseURL: `https://${config.projectId}.firebaseio.com`,
-					projectId: config.projectId,
-					storageBucket: `${config.projectId}.appspot.com`,
-					messagingSenderId: config.msgSendId,
-					appId: config.appId,
-				};
+		<script>
+			var config = config();
 
-				firebase.initializeApp(firebaseConfig);
+			var firebaseConfig = {
+				apiKey: config.firebase_key,
+				authDomain: `${config.projectId}.firebaseapp.com`,
+				databaseURL: `https://${config.projectId}.firebaseio.com`,
+				projectId: config.projectId,
+				storageBucket: `${config.projectId}.appspot.com`,
+				messagingSenderId: config.msgSendId,
+				appId: config.appId,
+			};
 
-				var db = firebase.database();
-			</script>
-		</body>
+			firebase.initializeApp(firebaseConfig);
+
+			var db = firebase.database();
+		</script>
 		<script src="p5.js"></script>
 		<script src="p5.sound.js"></script>
 		<script src="./helperFunctions.js"></script>
@@ -57,10 +58,9 @@
 		<script src="./objects/CurrentShape.js"></script>
 		<script src="./objects/Preview.js"></script>
 		<script src="./objects/Game.js"></script>
-    <script src="./objects/TitleScreen.js"></script>
-    <script src="qt.js"></script>
-	</head>
-	<body id="body">
-		<!-- <script src="./objects/ScoreScreen.js"></script> -->
+		<script src="./objects/TitleScreen.js"></script>
+		<script src="./objects/ScoreScreen.js"></script>
+
+		<script src="qt.js"></script>
 	</body>
-  </html>
+</html>

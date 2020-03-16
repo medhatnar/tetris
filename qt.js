@@ -79,7 +79,7 @@ function preload() {
   // gameOverSound;
 
   // Music
-  // gameMusic[0] = loadSound("./assets/sounds/testMusic.mp3");
+  gameMusic[0] = loadSound("./assets/sounds/testMusic.mp3");
 }
 
 // OBJECTS ////////////////////////////////////////////////////////////////////////////////////
