@@ -4,6 +4,9 @@ function Game() {
   this.score = 0;
   this.level = 0;
   this.gameOver = false;
+  let totalLines = 0;
+  let totalTetris = 0;
+  let lastScoreTetris = false;
   
   let intervalCounter = 0;
 
@@ -30,12 +33,30 @@ function Game() {
   }
 
   this.updateScore = function(numOfFullLines) {
-    if (numOfFullLines === 1) this.score += 10;
-    else if (numOfFullLines === 2) this.score += 25;
-    else if (numOfFullLines === 3) this.score += 50;
-    else if (numOfFullLines === 4) this.score += 100;
+    if (numOfFullLines === 1) this.score += 100;
+    else if (numOfFullLines === 2) {
+      this.score += 250;
+    }
+    else if (numOfFullLines === 3) {
+      this.score += 500;
+    }
+    else if (numOfFullLines === 4) {
+      if (lastScoreTetris) {
+        this.score += 1200;
+      }
+      else {
+        this.score += 800;
+      }
+      lastScoreTetris = true;
+    }
 
-    if (this.score >= (100 * (this.level + 1))) {
+    if (numOfFullLines !== 4) {
+      lastScoreTetris = false;
+    }
+
+    totalLines += numOfFullLines;
+
+    if (totalLines % 10 === 0) {
       // gameMusic[this.level].stop();
       this.level += 1;
       mode.game = "level up";
