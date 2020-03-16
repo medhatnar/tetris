@@ -1,53 +1,68 @@
 <!DOCTYPE html>
 <html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet"> 
-    <title>QT</title>
-    <style> body {padding: 0; margin: 0;} </style>
-    <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
-    <script src="p5.js"></script>
-    <script src="p5.sound.js"></script>
-    <script src="./helperFunctions.js"></script>
-    <!-- <script src="./objects/TitleScreen.js"></script> -->
-    <script src="./objects/GameArea.js"></script>
-    <script src="./objects/Window.js"></script>
-    <script src="./objects/Mode.js"></script>
-    <script src="./objects/OpeningPrompt.js"></script>
-    <script src="./objects/TitleScreenDreeVer.js"></script>
-    <script src="./objects/Display.js"></script>
-    <script src="./objects/Grid.js"></script>
-    <script src="./objects/Dev.js"></script>
-    <script src="./objects/FallIntervalTimer.js"></script>
-    <script src="./objects/Shape.js"></script>
-    <script src="./objects/Letters/I.js"></script>
-    <script src="./objects/Letters/O.js"></script>
-    <script src="./objects/Letters/T.js"></script>
-    <script src="./objects/Letters/Z.js"></script>
-    <script src="./objects/Letters/S.js"></script>
-    <script src="./objects/Letters/L.js"></script>
-    <script src="./objects/Letters/J.js"></script>
-    <script src="./objects/CurrentShape.js"></script>
-    <script src="./objects/Preview.js"></script>
-    <script src="./objects/Game.js"></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-app.js"></script>
-    <script src="/__/firebase/init.js"></script> -->
-    <!-- <script src="qt.js"></script> -->
-    <!-- <script src="test.js"></script> -->
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
+		<link
+			href="https://fonts.googleapis.com/css?family=VT323&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" type="text/css" href="styles.css" />
+		<title>QT</title>
+		<link
+			href="https://fonts.googleapis.com/css?family=VT323&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="./server/env.js"></script>
+		<body>
+			<script>
+				var config = config();
 
-			// Initialize Firebase
-			firebase.initializeApp(firebaseConfig);
+				var firebaseConfig = {
+					apiKey: config.firebase_key,
+					authDomain: `${config.projectId}.firebaseapp.com`,
+					databaseURL: `https://${config.projectId}.firebaseio.com`,
+					projectId: config.projectId,
+					storageBucket: `${projectId}.appspot.com`,
+					messagingSenderId: config.msgSendId,
+					appId: config.appId,
+				};
 
-			var db = firebase.database();
+				firebase.initializeApp(firebaseConfig);
 
-			db.ref('/color/')
-				.once('value')
-				.then(function(snapshot) {
-					console.log(snapshot.val());
-				});
-		</script>
+				var db = firebase.database();
+			</script>
+		</body>
+		<script src="p5.js"></script>
+		<script src="p5.sound.js"></script>
+		<script src="./helperFunctions.js"></script>
+		<script src="./objects/GameArea.js"></script>
+		<script src="./objects/Window.js"></script>
+		<script src="./objects/Mode.js"></script>
+		<script src="./objects/OpeningPrompt.js"></script>
 		<script src="./objects/TitleScreen.js"></script>
+		<script src="./objects/TitleScreenDreeVer.js"></script>
+		<script src="./objects/Display.js"></script>
+		<script src="./objects/Grid.js"></script>
+		<script src="./objects/Dev.js"></script>
+		<script src="./objects/FallIntervalTimer.js"></script>
+		<script src="./objects/Shape.js"></script>
+		<script src="./objects/Letters/I.js"></script>
+		<script src="./objects/Letters/O.js"></script>
+		<script src="./objects/Letters/T.js"></script>
+		<script src="./objects/Letters/Z.js"></script>
+		<script src="./objects/Letters/S.js"></script>
+		<script src="./objects/Letters/L.js"></script>
+		<script src="./objects/Letters/J.js"></script>
+		<script src="./objects/CurrentShape.js"></script>
+		<script src="./objects/Preview.js"></script>
+		<script src="./objects/Game.js"></script>
+		<!-- <script src="qt.js"></script> -->
+		<!-- <script src="test.js"></script> -->
+	</head>
+	<body id="body">
+		<!-- <script src="./objects/ScoreScreen.js"></script> -->
 	</body>
 </html>
