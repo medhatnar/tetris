@@ -131,12 +131,16 @@ function draw() {
     if (mode.game === "update grid") {
       if (fallIntervalTimer.fallNow()) {
         grid.absorbCurrentShape();
-        grid.lineCheck();
+        if (!(mode.game === "game over")) grid.lineCheck();
       }
     }
 
     if (mode.game === "level up") {
       game.levelUp();
+    }
+
+    if (mode.game === "game over") {
+
     }
     
     display.display();

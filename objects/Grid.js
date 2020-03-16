@@ -103,6 +103,8 @@ function Grid() {
       currentShape.angle
     );
     for (let i = 0; i < 4; i++) {
+      // if (blockPositions[i][1] <= 4) mode.game = "game over";
+      if (blockPositions[i][1] <= 4) mode.game = "game over";
       grid.gridArray[blockPositions[i][1]][blockPositions[i][0]] = blockColor;
     }
     gridAbsorbSound.play();
