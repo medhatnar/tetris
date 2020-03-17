@@ -1,16 +1,23 @@
+let input, button, score
+
 function ScoreScreen() {
-    this.display = function() {}
+    this.display = function() {
+        
+    }
 }
 
-function preload() {
-}
+var config = config();
 
-function setup() {
-	createCanvas(900, 900);
-}
+var firebaseConfig = {
+				apiKey: config.firebase_key,
+				authDomain: `${config.projectId}.firebaseapp.com`,
+				databaseURL: `https://${config.projectId}.firebaseio.com`,
+				projectId: config.projectId,
+				storageBucket: `${config.projectId}.appspot.com`,
+				messagingSenderId: config.msgSendId,
+				appId: config.appId,
+};
 
-function draw() {
-  background(0);
-	ScoreScreen.display();
-}
+firebase.initializeApp(firebaseConfig);
 
+var db = firebase.database();
