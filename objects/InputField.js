@@ -3,14 +3,14 @@ let initialsInput;
 let score;
 
 function setInitials() {
-	initials = this.value().toUpperCase();
+	initials = this.value();
 }
 
 function sendScore() {
-	db.ref('highScores/' + initials)
+	db.ref('highScores/' + initials.toUpperCase())
 		.set({
-			initials: initials,
-			score: game.score, // need to pass score in. Game.score ?
+			initials: initials.toUpperCase(),
+			score: game.score,
 			date: new Date(Date.now()).toUTCString(),
 		})
 		.then(res => (key = ''));
@@ -24,12 +24,26 @@ function InputField() {
 	};
 
 	this.display = function() {
-        initialsInput.position(200, 265);
+        textAlign(CENTER);
+        textSize(150);
+        textFont(font0);
+        stroke(hotPink);
+        strokeWeight(10);
+        fill(white);
+        text("PLEASE ENTER A NAME", 200, 200);
+
+        initialsInput.position(450, 300);
+        initialsInput.size(450,200);
 		if (key === 'Enter') {
 			sendScore();
 		}
 
-		textAlign(CENTER);
-		textSize(50);
 	};
 }
+
+// hotPink,
+// 		purple,
+// 		darkBlue,
+// 		lightBlue,
+// 		white,
+// 		lightPink,

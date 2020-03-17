@@ -8,8 +8,8 @@ function Mode() {
   // 2) title screen
   // 3) game
   // 4) score screen
-  this.main = "window test";
-  // this.main = "dev";
+  // this.main = "window test";
+  this.main = "dev";
 
   // Game modes include
   // 0) new shape
