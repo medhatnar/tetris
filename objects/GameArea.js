@@ -15,6 +15,6 @@ function GameArea() {
 
   this.positionGameArea = function() {
     this.left = center(window.innerWidth, this.size);
-    this.top = center(window.innerHeight, this.size);
+    // this.top = center(window.innerHeight, this.size);
   }
 }

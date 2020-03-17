@@ -30,6 +30,7 @@ let purpleBlockImage;
 let skyBlueBlockImage;
 let whiteBlockImage;
 let yellowBlockImage;
+
 // ARROWS ///////////////
 let arrows = {};
 
@@ -77,7 +78,6 @@ function preload() {
   fullLineSound = loadSound("./assets/sounds/fullLine1.mp3");
   gameOverSound = loadSound("./assets/sounds/gameOver0.mp3");
 
-  // gameOverSound;
 
   // Music
   // gameMusic[0] = loadSound("./assets/sounds/testMusic.mp3");
@@ -150,6 +150,7 @@ function draw() {
     if (mode.game === "level up") {
       game.levelUp();
     }
+    
     display.display();
   } else if(mode.main === "input screen") {
     inputField.display();
