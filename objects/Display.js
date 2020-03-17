@@ -21,5 +21,9 @@ function Display() {
     preview.display();
     game.display();
     if (mode.game === "line collapse") grid.lineCollapse();
+    if (mode.game === "game over") {
+      gameOverScreen.display();
+    }
+
   }
 }
