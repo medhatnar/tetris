@@ -60,6 +60,7 @@ function Window() {
       strokeWeight(0); 
       text("ENABLE FULLSCREEN", fsbcoordinates[0], fsbcoordinates[1], fsbcoordinates[2], fsbcoordinates[3]);
     }
+    else (mode.main === "opening prompt");
   }
 
 }
