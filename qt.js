@@ -75,11 +75,12 @@ function preload() {
   rotateSound = loadSound("./assets/sounds/rotate0.mp3");
   cannotRotateSound = loadSound("./assets/sounds/cannotRotate1.mp3");
   fullLineSound = loadSound("./assets/sounds/fullLine1.mp3");
+  gameOverSound = loadSound("./assets/sounds/gameOver0.mp3");
 
   // gameOverSound;
 
   // Music
-  gameMusic[0] = loadSound("./assets/sounds/testMusic.mp3");
+  // gameMusic[0] = loadSound("./assets/sounds/testMusic.mp3");
 }
 
 // OBJECTS ////////////////////////////////////////////////////////////////////////////////////
@@ -95,6 +96,7 @@ const fallIntervalTimer = new FallIntervalTimer();
 let currentShape = new CurrentShape(5, 0, randomLetter());
 const preview = new Preview();
 const game = new Game();
+const gameOverScreen = new GameOverScreen();
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
@@ -149,7 +151,6 @@ function draw() {
     }
 
     if (mode.game === "game over") {
-
     }
     
     display.display();
