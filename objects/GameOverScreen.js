@@ -12,7 +12,7 @@ function GameOverScreen() {
     if (frameCount % colorChangeInterval === 0) localFrameCount += 1;
 
     if (localFrameCount >= 150) {
-      mode.main = "score screen";
+      mode.main = "input screen";
     }
   }
 }

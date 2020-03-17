@@ -89,7 +89,7 @@ const windowObject = new Window();
 const mode = new Mode();
 const openingPrompt = new OpeningPrompt();
 const titleScreen = new TitleScreen();
-const InputField = new InputField();
+const inputField = new InputField();
 const display = new Display();
 const grid = new Grid();
 const dev = new Dev();
@@ -101,7 +101,7 @@ const gameOverScreen = new GameOverScreen();
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
-  background(0);
+  inputField.setup();
   windowObject.screenSize();
 }
 
@@ -150,11 +150,9 @@ function draw() {
     if (mode.game === "level up") {
       game.levelUp();
     }
-
-    if (mode.game === "game over") {
-    }
-    
     display.display();
+  } else if(mode.main === "input screen") {
+    inputField.display();
   }
 }
 

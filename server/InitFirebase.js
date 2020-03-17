@@ -1,5 +1,3 @@
-var config = config();
-
 var firebaseConfig = {
 				apiKey: config.firebase_key,
 				authDomain: `${config.projectId}.firebaseapp.com`,
