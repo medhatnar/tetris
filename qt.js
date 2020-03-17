@@ -88,6 +88,7 @@ const windowObject = new Window();
 const mode = new Mode();
 const openingPrompt = new OpeningPrompt();
 const titleScreen = new TitleScreen();
+const InputField = new InputField();
 const display = new Display();
 const grid = new Grid();
 const dev = new Dev();
