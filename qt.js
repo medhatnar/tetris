@@ -104,17 +104,18 @@ function preload() {
 	arrows.right = loadImage('../assets/images/arrows/arrowRight.png');
 	arrows.down = loadImage('../assets/images/arrows/arrowDown.png');
 
-	// Sound Effects
-	// lineCollapseSound;
-	moveSound = loadSound('./assets/sounds/move.mp3');
-	gridAbsorbSound = loadSound('./assets/sounds/gridAbsorb0.mp3');
-	rotateSound = loadSound('./assets/sounds/rotate0.mp3');
-	cannotRotateSound = loadSound('./assets/sounds/cannotRotate1.mp3');
-	fullLineSound = loadSound('./assets/sounds/fullLine1.mp3');
-	gameOverSound = loadSound('./assets/sounds/gameOver0.mp3');
+  // Sound Effects
+  // lineCollapseSound;
+  moveSound = loadSound("./assets/sounds/move.mp3");
+  gridAbsorbSound = loadSound("./assets/sounds/gridAbsorb0.mp3");
+  rotateSound = loadSound("./assets/sounds/rotate0.mp3");
+  cannotRotateSound = loadSound("./assets/sounds/cannotRotate1.mp3");
+  fullLineSound = loadSound("./assets/sounds/fullLine1.mp3");
+  gameOverSound = loadSound("./assets/sounds/gameOver0.mp3");
 
-	// Music
-	// gameMusic[0] = loadSound("./assets/sounds/testMusic.mp3");
+
+  // Music
+  // gameMusic[0] = loadSound("./assets/sounds/gameMusic.wav");
 }
 
 // OBJECTS ////////////////////////////////////////////////////////////////////////////////////

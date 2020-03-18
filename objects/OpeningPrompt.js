@@ -6,6 +6,7 @@ function OpeningPrompt() {
   this.fullScreenPreSelected = false;
   this.enableFullScreen = null;
   this.enableAudio = null;
+  let beginButtonPressed = false;
 
   // DISPLAY ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -116,9 +117,12 @@ function OpeningPrompt() {
         if (this.fullScreenPreSelected === false && this.enableFullScreen) {
           transistionToFullScreen();
         }
-        gameArea.positionGameArea();
-        mode.main = "title screen";
+        beginButtonPressed = true;
       }
+    }
+    if(screen.width === window.innerWidth && screen.height === window.innerHeight && beginButtonPressed) {
+      gameArea.positionGameArea();
+      mode.main = "title screen";      
     }
   }
 }
