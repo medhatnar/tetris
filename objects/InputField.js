@@ -28,6 +28,7 @@ function InputField() {
         initialsInput.style('font-family', font0);
         initialsInput.style('color', purple);
         initialsInput.style('text-align', 'center');
+        initialsInput.style('text-transform', 'uppercase');
 	};
 
 	this.display = function() {
