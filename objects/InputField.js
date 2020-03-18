@@ -1,6 +1,7 @@
 let initials;
 let initialsInput;
 let score;
+let instruction = "PLEASE ENTER A NAME";
 
 function setInitials() {
 	initials = this.value();
@@ -13,14 +14,20 @@ function sendScore() {
 			score: game.score,
 			date: new Date(Date.now()).toUTCString(),
 		})
-		.then(res => (key = ''));
+        .then(res => (key = ''));
+        
+        initialsInput.value('');
 }
 
 function InputField() {
 	this.setup = function() {
 		initialsInput = createInput('');
         initialsInput.input(setInitials);
-		
+        initialsInput.attribute('maxlength', 4);
+        initialsInput.style('font-size', '75px');
+        initialsInput.style('font-family', font0);
+        initialsInput.style('color', purple);
+        initialsInput.style('text-align', 'center');
 	};
 
 	this.display = function() {
@@ -30,14 +37,14 @@ function InputField() {
         stroke(hotPink);
         strokeWeight(10);
         fill(white);
-        text("PLEASE ENTER A NAME", 200, 200);
+        text(instruction, 200, 200);
 
-        initialsInput.position(450, 300);
-        initialsInput.size(450,200);
+        initialsInput.position(500, 300);
+        initialsInput.size(500,100);
 		if (key === 'Enter') {
+            instruction = "THANK YOU FOR PLAYING!";
 			sendScore();
 		}
-
 	};
 }
 
