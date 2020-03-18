@@ -1,5 +1,8 @@
 function Window() {
 
+  let windowTooSmall = false;
+  let initialWindowCheck = false;
+
   // METHODS ////////////////////////////////////////////////////////////////////////////////////////////
   this.screenSize = function() {
     textFont(font0);
@@ -12,7 +15,18 @@ function Window() {
   }
 
   this.windowSize = function() {
-    if (window.innerWidth < gameArea.size || window.innerHeight < gameArea.size) {
+    if (initialWindowCheck === false) {
+      if (window.innerWidth < gameArea.size || window.innerHeight < gameArea.size) {
+        windowTooSmall = true;
+        initialWindowCheck = true;
+      }
+      else {
+        mode.main = "opening prompt";
+        console.log("here");
+      }
+    }
+
+    if (windowTooSmall) {
 
       fill("magenta");
       stroke("purple");
@@ -25,13 +39,15 @@ function Window() {
       strokeWeight(0);
       text(`Sorry, this game requires at least a 900 x 900 pixel display.`, 50, 50, window.innerWidth - 100, window.innerHeight);
       text(`Your current window: ${window.innerWidth} x ${window.innerHeight}.`, 50, 150, window.innerWidth - 100, window.innerHeight);
-      text("Please resize your window to an appropriate display and REFRESH THE PAGE.", 50, 225, window.innerWidth - 50, window.innerHeight);
+      text("Please resize your window to an appropriate display and REFRESH THE PAGE.", 50, 225, 400, window.innerHeight);
       text("Alternatively, enable fullscreen.", 50, 350, window.innerWidth - 50, window.innerHeight); 
 
       // FULL SCREEN BUTTON ////////////
       textSize(25); 
       textAlign(CENTER, CENTER);
-      const fsbcoordinates = [center(window.innerWidth, 300), 420, 300, 50];
+      // const fsbcoordinates = [center(window.innerWidth, 300), 420, 300, 50];
+      const fsbcoordinates = [100, 420, 300, 50];
+
       strokeWeight(3);
       fill(0);
       rect(fsbcoordinates[0], fsbcoordinates[1], fsbcoordinates[2], fsbcoordinates[3]);
@@ -60,7 +76,6 @@ function Window() {
       strokeWeight(0); 
       text("ENABLE FULLSCREEN", fsbcoordinates[0], fsbcoordinates[1], fsbcoordinates[2], fsbcoordinates[3]);
     }
-    else (mode.main === "opening prompt");
   }
 
 }
