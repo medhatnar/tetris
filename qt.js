@@ -1,4 +1,4 @@
-// Initialization
+// Get rid of scroll bars
 document.documentElement.style.overflow = "hidden";
 
 // ASSETS /////////////////////////////////////////////////////////////////////////////////////
@@ -80,7 +80,7 @@ function preload() {
 
 
   // Music
-  // gameMusic[0] = loadSound("./assets/sounds/testMusic.mp3");
+  // gameMusic[0] = loadSound("./assets/sounds/gameMusic.wav");
 }
 
 // OBJECTS ////////////////////////////////////////////////////////////////////////////////////
@@ -151,6 +151,9 @@ function draw() {
     }
     
     display.display();
+  }
+  else if (mode.main === "score screen") {
+
   }
 }
 
