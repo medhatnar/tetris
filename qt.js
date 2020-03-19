@@ -15,7 +15,8 @@ let rotateSound;
 let fullLineSound;
 
 // MUSIC ////
-const gameMusic = [];
+// const gameMusic = [];
+let gameMusic;
 let titleScreenMusic;
 let scoreScreenMusic;
 let gameOverMusic;
@@ -77,10 +78,13 @@ function preload() {
   cannotRotateSound = loadSound("./assets/sounds/cannotRotate1.mp3");
   fullLineSound = loadSound("./assets/sounds/fullLine1.mp3");
   gameOverSound = loadSound("./assets/sounds/gameOver0.mp3");
+  // 3, 4 6!
+  levelUpSound = loadSound("./assets/sounds/gameOver7.mp3");
 
 
   // Music
-  // gameMusic[0] = loadSound("./assets/sounds/gameMusic.wav");
+  // gameMusic[0] = loadSound("./assets/sounds/gameMusic.mp3");
+  gameMusic = loadSound("./assets/sounds/gameMusic.mp3");
 }
 
 // OBJECTS ////////////////////////////////////////////////////////////////////////////////////

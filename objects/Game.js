@@ -8,16 +8,36 @@ function Game() {
   
   let intervalCounter = 0;
 
+  let levelUpGraphicsInterval = 20;
+  const levelUpGraphicsLines = [];
+  for (let j = 0 ; j < 10 ; j++) {
+    levelUpGraphicsLines[j] = randRange(0, 900);
+  }
 
   // Methods
   this.display = function() {
 
     if(mode.game === "level up") {
+      if (frameCount % levelUpGraphicsInterval === 0) {
+        for (let j = 0 ; j < 10 ; j++) {
+          levelUpGraphicsLines[j] = randRange(0, 900);
+        }
+      }
+      strokeWeight(randRange(50, 100));
+      // stroke(`rgba(255, 255, 255, ${randRange(3, 6) * 0.1})`);
+      stroke(`rgba(255, 255, 255, 0.3)`);
+
+
+      for (let j = 0 ; j < 10 ; j++) {
+        // stroke(`rgba( ${levelUpGraphicsLines[j][0]},  ${levelUpGraphicsLines[j][1]},  ${levelUpGraphicsLines[j][2]}, ${randRange(3, 6) * 0.1})`);
+        line(j * 100, 0, levelUpGraphicsLines[j], 900);
+      }     
+        
       strokeWeight(5);
       stroke(Math.floor(fallIntervalTimer.fallCyclePercentage() * 255));
       fill(0);
-      textSize(50);
-      text("LEVEL UP!", 650, 600);
+      textSize(200);
+      text("LEVEL UP!", 100, 450);
     }
 
     strokeWeight(2);
@@ -54,8 +74,12 @@ function Game() {
 
     totalLines += numOfFullLines;
 
+    // if (Math.floor(totalLines / 10) !== this.level) {
     if (Math.floor(totalLines / 10) !== this.level) {
+
       // gameMusic[this.level].stop();
+      gameMusic.stop();
+      levelUpSound.play();
       this.level += 1;
       mode.game = "level up";
       currentShape = null;
@@ -67,9 +91,14 @@ function Game() {
       gridAbsorbSound.play();
       intervalCounter += 1;
       if (intervalCounter === 4) {
+        gameMusic.rate(gameMusic.rate() + 0.05);
+        console.log(gameMusic.rate());
+        console.log(totalLines);
+        gameMusic.play();
         mode.game = "new shape";
         fallIntervalTimer.fallInterval -= 3;
         intervalCounter = 0;
+
       }
     }
   }

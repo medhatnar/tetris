@@ -106,6 +106,7 @@ function Grid() {
       if (blockPositions[i][1] <= 3) {
         mode.game = "game over";
         gameOverSound.play();
+        gameMusic.stop();
       }
       grid.gridArray[blockPositions[i][1]][blockPositions[i][0]] = blockColor;
     }

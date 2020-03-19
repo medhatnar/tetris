@@ -14,7 +14,8 @@ function Dev() {
         mode.audioOn = true;
         gameArea.positionGameArea();
         mode.main = "game";
-        gameMusic[0].play();
+        // gameMusic[0].play();
+        gameMusic.play();
       }
     }
   }
