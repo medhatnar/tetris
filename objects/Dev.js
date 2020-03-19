@@ -13,8 +13,8 @@ function Dev() {
       if (screen.height === window.innerHeight) {
         mode.audioOn = true;
         gameArea.positionGameArea();
-        mode.main = "game";
-        gameMusic[0].play();
+        mode.main = "input screen";
+        // gameMusic[0].play();
       }
     }
   }

@@ -1,4 +1,4 @@
-let initials;
+let initials = '';
 let initialsInput;
 let score;
 let instruction = "PLEASE ENTER A NAME";
@@ -24,11 +24,12 @@ function InputField() {
 		initialsInput = createInput('');
         initialsInput.input(setInitials);
         initialsInput.attribute('maxlength', 4);
-        initialsInput.style('font-size', '75px');
+        initialsInput.style('font-size', '80px');
         initialsInput.style('font-family', font0);
         initialsInput.style('color', purple);
         initialsInput.style('text-align', 'center');
         initialsInput.style('text-transform', 'uppercase');
+        initialsInput.style('border', `20px ridge  ${lightBlue}`);
 	};
 
 	this.display = function() {
@@ -43,15 +44,12 @@ function InputField() {
         initialsInput.position(500, 300);
         initialsInput.size(500,100);
 		if (key === 'Enter') {
-            instruction = "THANK YOU FOR PLAYING!";
+            instruction = 'THANK YOU FOR PLAYING!';
 			sendScore();
+            setTimeout(() => {
+                mode.main = 'score screen';
+                initialsInput.style('border', `20px ridge  ${lightBlue}`);
+            }, 1000)
 		}
 	};
 }
-
-// hotPink,
-// 		purple,
-// 		darkBlue,
-// 		lightBlue,
-// 		white,
-// 		lightPink,

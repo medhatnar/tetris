@@ -125,6 +125,7 @@ const mode = new Mode();
 const openingPrompt = new OpeningPrompt();
 const titleScreen = new TitleScreen();
 const inputField = new InputField();
+const scoreScreen = new ScoreScreen();
 const display = new Display();
 const grid = new Grid();
 const dev = new Dev();
@@ -179,9 +180,12 @@ function draw() {
 		if (mode.game === 'level up') {
 			game.levelUp();
 		}
-
 		display.display();
 	} else if (mode.main === 'input screen') {
+    gameArea.display();
 		inputField.display();
-	}
+	} else if(mode.main === 'score screen') {
+    gameArea.display();
+    scoreScreen.display();
+  }
 }
