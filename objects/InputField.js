@@ -45,10 +45,10 @@ function InputField() {
         initialsInput.size(500,100);
 		if (key === 'Enter') {
             instruction = 'THANK YOU FOR PLAYING!';
+            removeElements();
 			sendScore();
             setTimeout(() => {
                 mode.main = 'score screen';
-                initialsInput.style('border', `20px ridge  ${lightBlue}`);
             }, 1000)
 		}
 	};
