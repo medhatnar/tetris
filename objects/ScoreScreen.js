@@ -8,8 +8,10 @@ function ScoreScreen() {
 	var nameXPos;
 	var scoreXPos;
 	var dateXPos;
+	var dataCalled = false;
 
 	this.display = function() {
+		if(dataCalled === false) { readScores(); dataCalled = true;};
 		textAlign(CENTER);
 		stroke(yellow);
 		fill(0, 0, 0);
@@ -31,7 +33,8 @@ function ScoreScreen() {
 		text('SCORE', 450, yCor + 100);
 		text('DATE', 750, yCor + 100);
 
-		if (yCor === 100) {
+		if (yCor === 100 && highScores) {
+			console.log(highScores);
 			var yCorOffset = 200;
 			textSize(50);
 			text('NAME', xCor, yCor + yCorOffset);
@@ -42,11 +45,11 @@ function ScoreScreen() {
 					if (xCor === 150) {
 						yCorOffset += 100;
 						clearInterval(rowInterval);
-					};
+					}
 					xCor -= 10;
 				}, 20);
 			}
-			
+
 			fill(0, 0, 0);
 			strokeWeight(0);
 			rect(
@@ -65,7 +68,6 @@ function ScoreScreen() {
 			.then(function(snapshot) {
 				var response = snapshot.val();
 				highScores = response;
-				console.log('high scores', highScores);
 				return highScores;
 			});
 	}
