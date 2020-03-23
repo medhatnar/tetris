@@ -1,22 +1,22 @@
 function ScoreScreen() {
 	var scores;
 	var highScores;
-	var yourRankScores;
 	var scoresToDisplay;
-	var rank;
+	var yourRank;
+	var rankings = [];
 	var headerText = 'YOUR RANKING';
 	var yCor = -100;
 	var xCor = gameArea.size + 10;
 	var headerInterval;
 	var dataCalled = false;
+	var haveNotDisplayedHighScores = true;
 
 	this.display = async function() {
 		if (dataCalled === false) {
-			scores = await readScores();
-			yourRankScores = await yourRank();
-			scoresToDisplay = yourRankScores;
-			highScores = scores.slice(0, 11);
 			dataCalled = true;
+			scores = await readScores();
+			scoresToDisplay = await rank();
+			highScores = scores.slice(0, 11);
 		}
 		textAlign(CENTER);
 		stroke(yellow);
@@ -44,27 +44,22 @@ function ScoreScreen() {
 			var yCorOffset = 200;
 			if (frameCount % 2 === 0 && xCor !== 150) xCor -= 10;
 
-			if (xCor === 150 && frameCount >= 500) {
-				console.log(
-					'high: ',
-					highScores,
-					'your rank: ',
-					yourRankScores,
-					'all scores: ',
-					scores
-				);
-				
-				scoreToDisplay = highScores;
-				xCor = gameArea.size + 10;
-				yCorOffset = 200;
-				headerText = 'QT HIGH SCORES';
-			}
-
 			for (let i = 0; i < scoresToDisplay.length; i++) {
+				if (xCor === 150 && haveNotDisplayedHighScores) {
+					haveNotDisplayedHighScores = false;
+					setTimeout(() => {
+						scoresToDisplay = highScores;
+						rankings = [...Array(11).keys(), 11];
+						rankings.shift();
+						xCor = gameArea.size + 10;
+						yCorOffset = 200;
+						headerText = 'QT HIGH SCORES';
+					}, 2000);
+				}
 				textSize(50);
 				text(scoresToDisplay[i].initials, xCor, yCor + yCorOffset);
 				text(scoresToDisplay[i].score, xCor + 260, yCor + yCorOffset);
-				text(i + 1, xCor + 615, yCor + yCorOffset);
+				text(rankings[i], xCor + 600, yCor + yCorOffset);
 				yCorOffset += 50;
 			}
 
@@ -79,15 +74,28 @@ function ScoreScreen() {
 		}
 	};
 
-	function yourRank() {
+	function rank() {
 		for (var i = 0; i < scores.length; i++) {
-			if (scores[i].initials == initials.toUpperCase()) {
-				rank = i + 1;
+			if (scores[i].initials === initials.toUpperCase()) {
+				yourRank = i + 1;
 				if (i < 5) {
 					return scores.slice(0, 11);
 				} else if (i > scores.length - 5) {
 					return scores.slice(scores.length - 11, scores.length);
 				} else {
+					rankings.push(
+						yourRank - 5,
+						yourRank - 4,
+						yourRank - 3,
+						yourRank - 2,
+						yourRank - 1,
+						yourRank,
+						yourRank - 2,
+						yourRank + 2,
+						yourRank + 3,
+						yourRank + 4,
+						yourRank + 5
+					);
 					return scores.slice(i - 5, i + 6);
 				}
 			}
