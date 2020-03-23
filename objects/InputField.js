@@ -16,12 +16,23 @@ function InputField() {
 	};
 
 	this.setInitials = function() {
-        initials = this.value();
+		initials = this.value();
+	};
+
+	this.checkForExistingInitials = function() {
+		return db
+			.ref(`scores/${initials}`)
+			.once('value')
+			.then(snapshot => snapshot);
 	};
 
 	this.sendScore = function() {
 		// VALIDATION CHECK NEEDED NO SPECIAL CHARACTERS ALLOWED
-		if (initials.length > 0) {
+		if (
+			initials.length > 0 &&
+			initials.match(/^[a-z0-9]+$/i) &&
+			checkForExistingInitials === true
+		) {
 			db.ref(`scores/${initials.toUpperCase()}`)
 				.set({
 					initials: initials.toUpperCase(),
@@ -47,7 +58,7 @@ function InputField() {
 		initialsInput.size(500, 100);
 		if (key === 'Enter') {
 			instruction = 'THANK YOU FOR PLAYING!';
-            removeElements();
+			removeElements();
 			this.sendScore();
 			setTimeout(() => {
 				mode.main = 'score screen';
