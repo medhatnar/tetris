@@ -1,7 +1,7 @@
 function Game() {
 
   // Variables
-  this.score = Math.floor(Math.random() * 1000);
+  this.score = 0;
   this.level = 0;
   let totalLines = 0;
   let lastScoreTetris = false;
