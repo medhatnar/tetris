@@ -75,12 +75,30 @@ function ScoreScreen() {
 	};
 
 	function rank() {
+		var countDownForLowLevels;
 		for (var i = 0; i < scores.length; i++) {
 			if (scores[i].initials === initials.toUpperCase()) {
 				yourRank = i + 1;
 				if (i < 5) {
+					rankings = [...Array(11).keys(), 11];
+					rankings.shift();
 					return scores.slice(0, 11);
 				} else if (i > scores.length - 5) {
+					rankings.push(
+						scores.length - 11,
+						scores.length - 10,
+						scores.length - 9,
+						scores.length - 8,
+						scores.length - 7,
+						scores.length - 6,
+						scores.length - 5,
+						scores.length - 4,
+						scores.length - 3,
+						scores.length - 2,
+						scores.length - 1,
+						scores.length
+					);
+					console.log('wankings', rankings);
 					return scores.slice(scores.length - 11, scores.length);
 				} else {
 					rankings.push(
