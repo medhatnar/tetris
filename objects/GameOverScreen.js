@@ -11,7 +11,7 @@ function GameOverScreen() {
     text("GAME OVER", 0, 0, gameArea.size, gameArea.size);
     if (frameCount % colorChangeInterval === 0) localFrameCount += 1;
 
-    if (localFrameCount >= 150) {
+    if (localFrameCount >= 90) {
       mode.main = "input screen";
     }
   }
