@@ -32,7 +32,6 @@ function InputField() {
 		let initialsTaken = await this.checkForExistingInitials();
 
 		if (initials.length > 0 && initials.match(/^[a-z0-9]+$/i)) {
-			console.log(initials, initialsTaken);
 			if (initialsTaken === false) {
 				db.ref(`scores/${initials.toUpperCase()}`)
 					.set({

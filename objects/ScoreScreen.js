@@ -98,7 +98,6 @@ function ScoreScreen() {
 						scores.length - 1,
 						scores.length
 					);
-					console.log('wankings', rankings);
 					return scores.slice(scores.length - 11, scores.length);
 				} else {
 					rankings.push(
