@@ -1,6 +1,7 @@
 let initialsInput;
 let instruction = 'PLEASE ENTER A NAME';
 let initials = '';
+let textSizeUnit = 150;
 
 function InputField() {
 	this.setup = function() {
@@ -21,33 +22,48 @@ function InputField() {
 
 	this.checkForExistingInitials = function() {
 		return db
-			.ref(`scores/${initials}`)
+			.ref('scores')
+			.child(initials.toUpperCase())
 			.once('value')
-			.then(snapshot => snapshot);
+			.then(snapshot => snapshot.exists());
 	};
 
-	this.sendScore = function() {
-		// VALIDATION CHECK NEEDED NO SPECIAL CHARACTERS ALLOWED
-		if (
-			initials.length > 0 &&
-			initials.match(/^[a-z0-9]+$/i) &&
-			checkForExistingInitials === true
-		) {
-			db.ref(`scores/${initials.toUpperCase()}`)
-				.set({
-					initials: initials.toUpperCase(),
-					score: game.score,
-					date: new Date(Date.now()).toUTCString(),
-				})
-				.then(res => (key = ''));
+	this.sendScore = async function() {
+		let initialsTaken = await this.checkForExistingInitials();
 
+		if (initials.length > 0 && initials.match(/^[a-z0-9]+$/i)) {
+			console.log(initials, initialsTaken);
+			if (initialsTaken === false) {
+				db.ref(`scores/${initials.toUpperCase()}`)
+					.set({
+						initials: initials.toUpperCase(),
+						score: game.score,
+						date: new Date(Date.now()).toUTCString(),
+					})
+					.then(res => { 
+						textSizeUnit = 150;
+						instruction = 'THANK YOU FOR PLAYING!';
+						removeElements();
+						setTimeout(() => {
+							key = '';
+							mode.main = 'score screen';
+						}, 1500);
+					});
+			} else {
+				textSizeUnit = 50;
+				instruction =
+					'This name has already been taken, please select another!';
+			}
 			initialsInput.value('');
+		} else {
+			textSizeUnit = 50;
+			instruction = 'PLEASE ENTER ALPHA-NUMERIC CHARACTERS ONLY.';
 		}
 	};
 
 	this.display = function() {
 		textAlign(CENTER);
-		textSize(150);
+		textSize(textSizeUnit);
 		textFont(font0);
 		stroke(hotPink);
 		strokeWeight(10);
@@ -57,12 +73,8 @@ function InputField() {
 		initialsInput.position(500, 300);
 		initialsInput.size(500, 100);
 		if (key === 'Enter') {
-			instruction = 'THANK YOU FOR PLAYING!';
-			removeElements();
+			key = '';
 			this.sendScore();
-			setTimeout(() => {
-				mode.main = 'score screen';
-			}, 1000);
 		}
 	};
 }

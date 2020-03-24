@@ -54,7 +54,7 @@ function ScoreScreen() {
 						xCor = gameArea.size + 10;
 						yCorOffset = 200;
 						headerText = 'QT HIGH SCORES';
-					}, 2000);
+					}, 7500);
 				}
 				textSize(50);
 				text(scoresToDisplay[i].initials, xCor, yCor + yCorOffset);
