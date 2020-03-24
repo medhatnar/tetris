@@ -94,7 +94,7 @@ function Game() {
         gameMusic.rate(gameMusic.rate() + 0.05);
         console.log(gameMusic.rate());
         console.log(totalLines);
-        gameMusic.play();
+        gameMusic.loop();
         mode.game = "new shape";
         fallIntervalTimer.fallInterval -= 3;
         intervalCounter = 0;

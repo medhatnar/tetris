@@ -67,7 +67,7 @@ function InputField() {
 		stroke(hotPink);
 		strokeWeight(10);
 		fill(white);
-		text(instruction, 200, 200);
+		text(instruction, 450, 200);
 
 		initialsInput.position(500, 300);
 		initialsInput.size(500, 100);
