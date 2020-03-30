@@ -1,5 +1,5 @@
 function Dev() {
-  let fullScreenApplied = false;
+	let fullScreenApplied = false;
 
   this.straightToGame = function() {
     if (fullScreenApplied !== true) {

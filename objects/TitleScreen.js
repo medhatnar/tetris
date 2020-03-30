@@ -2,14 +2,6 @@ function TitleScreen() {
 
 	const colorChangeInterval = 5;
 
-	var darkBlue = 'rgb(0, 0, 254)';
-	var hotPink = 'rgb(255, 33, 140)';
-	var lightBlue = 'rgb(91, 207, 250)';
-	var lightPink = 'rgb(500, 170, 185)';
-	var purple = 'rgb(188, 39, 252)';
-	var white = 'rgb(255, 255, 255)';
-	var yellow = 'rgb(255, 216, 0)';
-
 	var colors = [
 		hotPink,
 		purple,
@@ -26,6 +18,7 @@ function TitleScreen() {
 	this.enterButtonDown = function() {
 		if (keyIsDown(ENTER)) {
 			mode.main = "game";
+			gameMusic.play();
 			frameRate(60);
 		}
 	}
@@ -43,7 +36,7 @@ function TitleScreen() {
 	this.display = function() {
 		push();
 		angleMode(DEGREES);
-		textFont('VT323');
+		textFont(font0);
 		textAlign(CENTER, CENTER);
 		image(arrows.up, 380, 440);
 		image(arrows.left, 180, 535);
@@ -76,7 +69,7 @@ function TitleScreen() {
 		push();
 		frameRate(5);
 		angleMode(DEGREES);
-		textFont('VT323');
+		textFont(font0);
 		textSize(350);
 		strokeWeight(10);
 		stroke(0, 0, 0);

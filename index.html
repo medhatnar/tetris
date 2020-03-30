@@ -18,24 +18,7 @@
 	</head>
 	<body id="body">
 		<script src="./server/env.js"></script>
-
-		<script>
-			var config = config();
-
-			var firebaseConfig = {
-				apiKey: config.firebase_key,
-				authDomain: `${config.projectId}.firebaseapp.com`,
-				databaseURL: `https://${config.projectId}.firebaseio.com`,
-				projectId: config.projectId,
-				storageBucket: `${config.projectId}.appspot.com`,
-				messagingSenderId: config.msgSendId,
-				appId: config.appId,
-			};
-
-			firebase.initializeApp(firebaseConfig);
-
-			var db = firebase.database();
-		</script>
+		<script src="./server/InitFirebase.js"></script>
 		<script src="p5.js"></script>
 		<script src="p5.sound.js"></script>
 		<script src="./helperFunctions.js"></script>
@@ -58,9 +41,10 @@
 		<script src="./objects/CurrentShape.js"></script>
 		<script src="./objects/Preview.js"></script>
 		<script src="./objects/Game.js"></script>
-		<script src="./objects/TitleScreen.js"></script>
 		<script src="./objects/ScoreScreen.js"></script>
+		<script src="./objects/TitleScreen.js"></script>
 		<script src="./objects/GameOverScreen.js"></script>
+		<script src="./objects/InputField.js"></script>
 
 		<script src="qt.js"></script>
 	</body>
