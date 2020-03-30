@@ -120,9 +120,20 @@ function OpeningPrompt() {
         beginButtonPressed = true;
       }
     }
-    if(screen.width === window.innerWidth && screen.height === window.innerHeight && beginButtonPressed) {
-      gameArea.positionGameArea();
-      mode.main = "title screen";      
+    if (beginButtonPressed) {
+      if(this.enableAudio === false) {
+        masterVolume(0);
+      }
+      if (this.enableFullScreen === true) {
+        if (screen.width === window.innerWidth && screen.height === window.innerHeight) {
+          gameArea.positionGameArea();
+          mode.main = "title screen";
+        }
+      }
+      else {
+        gameArea.positionGameArea();
+        mode.main = "title screen";
+      }
     }
   }
 }

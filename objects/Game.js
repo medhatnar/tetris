@@ -91,14 +91,11 @@ function Game() {
       gridAbsorbSound.play();
       intervalCounter += 1;
       if (intervalCounter === 4) {
-        gameMusic.rate(gameMusic.rate() + 0.05);
-        console.log(gameMusic.rate());
-        console.log(totalLines);
+        if (this.level < 11) gameMusic.rate(gameMusic.rate() + 0.05);
         gameMusic.play();
         mode.game = "new shape";
-        fallIntervalTimer.fallInterval -= 3;
+        if (this.level < 11) fallIntervalTimer.fallInterval -= 3;
         intervalCounter = 0;
-
       }
     }
   }

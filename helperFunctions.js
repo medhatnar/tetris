@@ -26,8 +26,9 @@ function randomLetter() {
 
 function transistionToFullScreen() {
   resizeCanvas(screen.width, screen.height);
-  const bodyElement = document.getElementById("body");
-  bodyElement.requestFullscreen();
+  // const bodyElement = document.getElementById("body");
+  // bodyElement.requestFullscreen();
+  fullscreen(true);
 }
 
 function randRange(min, max) {
