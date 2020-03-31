@@ -37,7 +37,7 @@ function Game() {
       stroke(Math.floor(fallIntervalTimer.fallCyclePercentage() * 255));
       fill(0);
       textSize(200);
-      text("LEVEL UP!", 100, 450);
+      text("LEVEL UP!", 500, 450);
     }
 
     strokeWeight(2);
