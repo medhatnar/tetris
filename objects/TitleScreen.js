@@ -18,7 +18,7 @@ function TitleScreen() {
 	this.enterButtonDown = function() {
 		if (keyIsDown(ENTER)) {
 			mode.main = "game";
-			titleScreenMusic.pause();
+			// titleScreenMusic.pause();
 			gameMusic.play();
 			frameRate(60);
 		}

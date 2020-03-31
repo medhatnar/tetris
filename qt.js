@@ -121,8 +121,8 @@ function preload() {
   // gameMusic[0] = loadSound("./assets/sounds/gameMusic.mp3");
 	gameMusic = loadSound("./assets/sounds/gameMusic.mp3");
 	gameMusic.loop();
-	titleScreenMusic = loadSound("./assets/sounds/titleScreenMusic.mp3");
-	titleScreenMusic.loop();
+	// titleScreenMusic = loadSound("./assets/sounds/titleScreenMusic.mp3");
+	// titleScreenMusic.loop();
 }
 
 // OBJECTS ////////////////////////////////////////////////////////////////////////////////////
