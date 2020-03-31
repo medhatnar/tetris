@@ -128,7 +128,7 @@ function OpeningPrompt() {
         if (screen.width === window.innerWidth && screen.height === window.innerHeight) {
           gameArea.positionGameArea();
           mode.main = "title screen";
-          titleScreenMusic.play();
+          // titleScreenMusic.play();
         }
       }
       else {

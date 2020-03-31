@@ -108,11 +108,11 @@ function preload() {
   // Sound Effects
   // lineCollapseSound;
   moveSound = loadSound("./assets/sounds/move.mp3");
-  gridAbsorbSound = loadSound("./assets/sounds/gridAbsorb0.mp3");
-  rotateSound = loadSound("./assets/sounds/rotate0.mp3");
-  cannotRotateSound = loadSound("./assets/sounds/cannotRotate1.mp3");
-  fullLineSound = loadSound("./assets/sounds/fullLine1.mp3");
-  gameOverSound = loadSound("./assets/sounds/gameOver0.mp3");
+  gridAbsorbSound = loadSound("./assets/sounds/gridAbsorb17.mp3");
+  rotateSound = loadSound("./assets/sounds/rotate3.mp3");
+  cannotRotateSound = loadSound("./assets/sounds/cannotRotate2.mp3");
+  fullLineSound = loadSound("./assets/sounds/fullLine8.mp3");
+  gameOverSound = loadSound("./assets/sounds/gameOver1.mp3");
   // 3, 4 6!
   levelUpSound = loadSound("./assets/sounds/gameOver7.mp3");
 
@@ -120,9 +120,10 @@ function preload() {
   // Music
   // gameMusic[0] = loadSound("./assets/sounds/gameMusic.mp3");
 	gameMusic = loadSound("./assets/sounds/gameMusic.mp3");
+	gameMusic.volume(0.1);
 	gameMusic.loop();
-	titleScreenMusic = loadSound("./assets/sounds/titleScreenMusic.mp3");
-	titleScreenMusic.loop();
+	// titleScreenMusic = loadSound("./assets/sounds/titleScreenMusic.mp3");
+	// titleScreenMusic.loop();
 }
 
 // OBJECTS ////////////////////////////////////////////////////////////////////////////////////
